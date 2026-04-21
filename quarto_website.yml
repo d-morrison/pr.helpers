@@ -79,4 +79,7 @@ format:
       sidebar-width: 340px
       margin-width: 340px
 
+filters:
+  - slidebreak
+  - quarto
 

@@ -59,7 +59,7 @@
     "href": "CITATION.html",
     "title": "Citation",
     "section": "",
-    "text": "Citation\nTo cite package ‘rpt’ in publications use:\n\nLast F (2026). rpt: What the Package Does (One Line, Title Case). R package version 0.0.0.9010, https://github.com/UCD-SERG/rpt.",
+    "text": "Citation\nTo cite package ‘rpt’ in publications use:\n\nLast F (2026). rpt: What the Package Does (One Line, Title Case). R package version 0.0.0.9011, https://github.com/UCD-SERG/rpt.",
     "crumbs": [
       "Documentation",
       "Citation"
@@ -253,7 +253,7 @@
     "href": "vignettes/articles/quarto_article.html",
     "title": "Advanced Quarto Article",
     "section": "",
-    "text": "UC Davis Seroepidemiology Research Group (UCD-SERG)\n\n2026-02-02\nCode\nlibrary(rpt)",
+    "text": "UC Davis Seroepidemiology Research Group (UCD-SERG)\n\n2026-04-21\nCode\nlibrary(rpt)",
     "crumbs": [
       "Documentation",
       "Articles",
@@ -487,7 +487,7 @@
     "href": "vignettes/quarto_vignette-revealjs.html#quarto-features",
     "title": "Quarto Vignette Example",
     "section": "4 Quarto Features",
-    "text": "4 Quarto Features\nCallouts\n\n\n\n\n\n\nNote\n\n\nThis is a callout block that highlights important information.\n\n\n\n\n\n\n\n\n\nTip\n\n\nQuarto supports multiple types of callouts: note, tip, warning, important, and caution.\n\n\n\nCode Chunks with Modern Syntax\nYou can use the modern #| syntax for chunk options:\n\n\nCode\n# Create a simple plot\nplot(sample_data, \n     main = \"Sample Data\", \n     xlab = \"Index\", \n     ylab = \"Value\",\n     pch = 19,\n     col = \"steelblue\")\n\n\n\n\nFigure 1: Example plot showing data distribution"
+    "text": "4 Quarto Features\nCallouts\n\n\n\n\n\n\nNote\n\n\nThis is a callout block that highlights important information.\n\n\n\n\n\n\n\n\n\nTip\n\n\nQuarto supports multiple types of callouts: note, tip, warning, important, and caution."
   },
   {
     "objectID": "vignettes/quarto_vignette-revealjs.html#equations",
@@ -515,7 +515,7 @@
     "href": "vignettes/quarto_vignette-revealjs.html#references",
     "title": "Quarto Vignette Example",
     "section": "8 References",
-    "text": "8 References\nFor more information, see:\n\nQuarto Documentation\nUsing Quarto with R\nR Core Team (2024)\nUCD-SERG (2024)\n\n\n\n\n\nR Core Team. 2024. R: A Language and Environment for Statistical Computing. Vienna, Austria: R Foundation for Statistical Computing. https://www.R-project.org/.\n\n\nUCD-SERG. 2024. Rpt: R Package Template. https://github.com/UCD-SERG/rpt."
+    "text": "8 References\nFor more information, see:\n\nQuarto Documentation\nUsing Quarto with R\nR Core Team (2024)\nUCD-SERG (2024)\n\n\n\n\n\nR Core Team. 2024. R: A Language and Environment for Statistical Computing. R Foundation for Statistical Computing. https://www.R-project.org/.\n\n\nUCD-SERG. 2024. Rpt: R Package Template. https://github.com/UCD-SERG/rpt."
   },
   {
     "objectID": "vignettes/quarto_vignette.html",
