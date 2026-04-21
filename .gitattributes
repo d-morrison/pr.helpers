@@ -1,0 +1,4 @@
+inst/doc
+vignettes/*.html
+vignettes/*.R
+man/* linguist-generated
