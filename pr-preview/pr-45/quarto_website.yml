@@ -1,0 +1,81 @@
+project:
+  type: website
+  output-dir: ../docs/
+
+# Note: freeze functionality can be set at a project level or for individual .qmd files
+# execute:
+#   freeze: false
+bibliography: vignettes/references.bib
+website:
+  title: "$ALTDOC_PACKAGE_NAME"
+  repo-url: https://github.com/UCD-SERG/rpt
+  repo-actions: [edit, source, issue]
+  # search:
+  #   exclude: preview/
+  navbar:
+    search: true
+    pinned: false
+    right:
+      - icon: github
+        href: $ALTDOC_PACKAGE_URL_GITHUB
+        aria-label: $ALTDOC_PACKAGE_NAME GitHub
+    left:
+      - text: Documentation
+        file: man/rpt-package.qmd
+      - text: Articles
+        menu:
+          - text: "Getting started"
+            file: vignettes/getting-started.qmd
+          - text: "Intro vignette"
+            file: vignettes/quarto_vignette.qmd
+          - text: "Advanced"
+            file: vignettes/articles/quarto_article.qmd
+  sidebar:
+    collapse-level: 1
+    contents:
+      - text: Home
+        file: index.md
+        style: floating
+      - section: Articles
+        style: floating
+        contents:
+          - vignettes/getting-started.qmd
+          - vignettes/quarto_vignette.qmd
+          - vignettes/articles/quarto_article.qmd
+          - section: Advanced
+            contents:
+              - vignettes/articles/quarto_article.qmd
+      - section: $ALTDOC_MAN_BLOCK
+        style: floating
+      - text: News
+        file: $ALTDOC_NEWS
+      - text: Changelog
+        file: $ALTDOC_CHANGELOG
+      - text: License
+        file: $ALTDOC_LICENSE
+      - text: Licence
+        file: $ALTDOC_LICENCE
+      - text: Code of conduct
+        file: $ALTDOC_CODE_OF_CONDUCT
+      - text: Citation
+        file: $ALTDOC_CITATION
+
+format:
+  html:
+    code-link: true # enables downlit; see https://altdoc.etiennebacher.com/#/man/render_docs.md#auto-link-for-quarto-websites
+    theme:
+      light: default
+      dark: darkly
+    css: altdoc/styles.css
+    number-sections: false
+    code-copy: true
+    code-overflow: scroll
+    title-block-style: none
+    toc: true
+    grid:
+      sidebar-width: 340px
+      margin-width: 340px
+  docx:
+    number-sections: true
+
+

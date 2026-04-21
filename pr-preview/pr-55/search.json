@@ -1,0 +1,285 @@
+[
+  {
+    "objectID": "vignettes/quarto_vignette.html#introduction",
+    "href": "vignettes/quarto_vignette.html#introduction",
+    "title": "Quarto Vignette Example",
+    "section": "\n1 Introduction",
+    "text": "1 Introduction\nThis vignette demonstrates how to use Quarto (.qmd) files as vignettes in R packages. Quarto is the next-generation version of R Markdown, offering enhanced features and better integration with multiple programming languages."
+  },
+  {
+    "objectID": "vignettes/quarto_vignette.html#why-use-quarto",
+    "href": "vignettes/quarto_vignette.html#why-use-quarto",
+    "title": "Quarto Vignette Example",
+    "section": "\n2 Why Use Quarto?",
+    "text": "2 Why Use Quarto?\nQuarto offers several advantages over traditional R Markdown:\n\n\nEnhanced features: Better support for cross-references, callouts, and other advanced formatting\n\nMultiple engines: Works with R, Python, Julia, and Observable\n\nModern syntax: Cleaner YAML and chunk options using #| syntax\n\nBetter publishing: Improved website and book publishing capabilities"
+  },
+  {
+    "objectID": "vignettes/quarto_vignette.html#basic-example",
+    "href": "vignettes/quarto_vignette.html#basic-example",
+    "title": "Quarto Vignette Example",
+    "section": "\n3 Basic Example",
+    "text": "3 Basic Example\nHere’s a basic example using the package:\n\n#&gt; [1] 4.5"
+  },
+  {
+    "objectID": "vignettes/quarto_vignette.html#quarto-features",
+    "href": "vignettes/quarto_vignette.html#quarto-features",
+    "title": "Quarto Vignette Example",
+    "section": "\n4 Quarto Features",
+    "text": "4 Quarto Features\n\n4.1 Callouts\n\n\n\n\n\n\nNote\n\n\n\nThis is a callout block that highlights important information.\n\n\n\n\n\n\n\n\nTip\n\n\n\nQuarto supports multiple types of callouts: note, tip, warning, important, and caution.\n\n\n\n4.2 Code Chunks with Modern Syntax\nYou can use the modern #| syntax for chunk options:\n\n# Create a simple plot\nplot(sample_data, \n     main = \"Sample Data\", \n     xlab = \"Index\", \n     ylab = \"Value\",\n     pch = 19,\n     col = \"steelblue\")\n\n\n\nFigure 1: Example plot showing data distribution"
+  },
+  {
+    "objectID": "vignettes/quarto_vignette.html#equations",
+    "href": "vignettes/quarto_vignette.html#equations",
+    "title": "Quarto Vignette Example",
+    "section": "\n5 Equations",
+    "text": "5 Equations\nQuarto has excellent support for mathematical equations using LaTeX syntax:\nInline equation: \\(E = mc^2\\)\nDisplay equation:\n\\[\n\\bar{x} = \\frac{1}{n}\\sum_{i=1}^{n} x_i\n\\]"
+  },
+  {
+    "objectID": "vignettes/quarto_vignette.html#tables",
+    "href": "vignettes/quarto_vignette.html#tables",
+    "title": "Quarto Vignette Example",
+    "section": "\n6 Tables",
+    "text": "6 Tables\n\n\nTable 1: Comparison of R Markdown and Quarto\n\n\n\nFeature\nR Markdown\nQuarto\n\n\n\nYAML\nStandard\nEnhanced\n\n\nChunks\n{r, option=value}\n#| option: value\n\n\nPublishing\nGood\nExcellent\n\n\nCross-refs\nLimited\nNative"
+  },
+  {
+    "objectID": "vignettes/quarto_vignette.html#summary",
+    "href": "vignettes/quarto_vignette.html#summary",
+    "title": "Quarto Vignette Example",
+    "section": "\n7 Summary",
+    "text": "7 Summary\nQuarto vignettes provide a modern, feature-rich way to document R packages. They integrate seamlessly with pkgdown and offer enhanced capabilities for technical documentation."
+  },
+  {
+    "objectID": "vignettes/quarto_vignette.html#references",
+    "href": "vignettes/quarto_vignette.html#references",
+    "title": "Quarto Vignette Example",
+    "section": "\n8 References",
+    "text": "8 References\nFor more information, see:\n\nQuarto Documentation\nUsing Quarto with R\nR Core Team (2024)\nUCD-SERG (2024)"
+  },
+  {
+    "objectID": "vignettes/quarto_vignette-revealjs.html#introduction",
+    "href": "vignettes/quarto_vignette-revealjs.html#introduction",
+    "title": "Quarto Vignette Example",
+    "section": "1 Introduction",
+    "text": "1 Introduction\nThis vignette demonstrates how to use Quarto (.qmd) files as vignettes in R packages. Quarto is the next-generation version of R Markdown, offering enhanced features and better integration with multiple programming languages."
+  },
+  {
+    "objectID": "vignettes/quarto_vignette-revealjs.html#why-use-quarto",
+    "href": "vignettes/quarto_vignette-revealjs.html#why-use-quarto",
+    "title": "Quarto Vignette Example",
+    "section": "2 Why Use Quarto?",
+    "text": "2 Why Use Quarto?\nQuarto offers several advantages over traditional R Markdown:\n\nEnhanced features: Better support for cross-references, callouts, and other advanced formatting\nMultiple engines: Works with R, Python, Julia, and Observable\nModern syntax: Cleaner YAML and chunk options using #| syntax\nBetter publishing: Improved website and book publishing capabilities"
+  },
+  {
+    "objectID": "vignettes/quarto_vignette-revealjs.html#basic-example",
+    "href": "vignettes/quarto_vignette-revealjs.html#basic-example",
+    "title": "Quarto Vignette Example",
+    "section": "3 Basic Example",
+    "text": "3 Basic Example\nHere’s a basic example using the package:\n\n#&gt; [1] 4.5"
+  },
+  {
+    "objectID": "vignettes/quarto_vignette-revealjs.html#quarto-features",
+    "href": "vignettes/quarto_vignette-revealjs.html#quarto-features",
+    "title": "Quarto Vignette Example",
+    "section": "4 Quarto Features",
+    "text": "4 Quarto Features\nCallouts\n\n\n\n\n\n\nNote\n\n\nThis is a callout block that highlights important information.\n\n\n\n\n\n\n\n\n\nTip\n\n\nQuarto supports multiple types of callouts: note, tip, warning, important, and caution.\n\n\n\nCode Chunks with Modern Syntax\nYou can use the modern #| syntax for chunk options:\n\n# Create a simple plot\nplot(sample_data, \n     main = \"Sample Data\", \n     xlab = \"Index\", \n     ylab = \"Value\",\n     pch = 19,\n     col = \"steelblue\")\n\n\n\nFigure 1: Example plot showing data distribution"
+  },
+  {
+    "objectID": "vignettes/quarto_vignette-revealjs.html#equations",
+    "href": "vignettes/quarto_vignette-revealjs.html#equations",
+    "title": "Quarto Vignette Example",
+    "section": "5 Equations",
+    "text": "5 Equations\nQuarto has excellent support for mathematical equations using LaTeX syntax:\nInline equation: \\(E = mc^2\\)\nDisplay equation:\n\\[\n\\bar{x} = \\frac{1}{n}\\sum_{i=1}^{n} x_i\n\\]"
+  },
+  {
+    "objectID": "vignettes/quarto_vignette-revealjs.html#tables",
+    "href": "vignettes/quarto_vignette-revealjs.html#tables",
+    "title": "Quarto Vignette Example",
+    "section": "6 Tables",
+    "text": "6 Tables\n\n\n\nTable 1: Comparison of R Markdown and Quarto\n\n\n\n\n\nFeature\nR Markdown\nQuarto\n\n\n\n\nYAML\nStandard\nEnhanced\n\n\nChunks\n{r, option=value}\n#| option: value\n\n\nPublishing\nGood\nExcellent\n\n\nCross-refs\nLimited\nNative"
+  },
+  {
+    "objectID": "vignettes/quarto_vignette-revealjs.html#summary",
+    "href": "vignettes/quarto_vignette-revealjs.html#summary",
+    "title": "Quarto Vignette Example",
+    "section": "7 Summary",
+    "text": "7 Summary\nQuarto vignettes provide a modern, feature-rich way to document R packages. They integrate seamlessly with pkgdown and offer enhanced capabilities for technical documentation."
+  },
+  {
+    "objectID": "vignettes/quarto_vignette-revealjs.html#references",
+    "href": "vignettes/quarto_vignette-revealjs.html#references",
+    "title": "Quarto Vignette Example",
+    "section": "8 References",
+    "text": "8 References\nFor more information, see:\n\nQuarto Documentation\nUsing Quarto with R\nR Core Team (2024)\nUCD-SERG (2024)\n\n\n\n\n\nR Core Team. 2024. R: A Language and Environment for Statistical Computing. Vienna, Austria: R Foundation for Statistical Computing. https://www.R-project.org/.\n\n\nUCD-SERG. 2024. Rpt: R Package Template. https://github.com/UCD-SERG/rpt."
+  },
+  {
+    "objectID": "man/rpt-package.html",
+    "href": "man/rpt-package.html",
+    "title": "rpt",
+    "section": "",
+    "text": "What the package does (one paragraph).\n\n\n\nMaintainer: First Last first.last@example.com\n\n\n\nUseful links:\n\n\nhttps://github.com/UCD-SERG/rpt\n\n\nhttps://ucd-serg.github.io/rpt/\n\n\nReport bugs at https://github.com/UCD-SERG/rpt/issues",
+    "crumbs": [
+      "Documentation",
+      "Reference",
+      "rpt-package"
+    ]
+  },
+  {
+    "objectID": "man/rpt-package.html#rpt-what-the-package-does-one-line-title-case",
+    "href": "man/rpt-package.html#rpt-what-the-package-does-one-line-title-case",
+    "title": "rpt",
+    "section": "",
+    "text": "What the package does (one paragraph).\n\n\n\nMaintainer: First Last first.last@example.com\n\n\n\nUseful links:\n\n\nhttps://github.com/UCD-SERG/rpt\n\n\nhttps://ucd-serg.github.io/rpt/\n\n\nReport bugs at https://github.com/UCD-SERG/rpt/issues",
+    "crumbs": [
+      "Documentation",
+      "Reference",
+      "rpt-package"
+    ]
+  },
+  {
+    "objectID": "index.html",
+    "href": "index.html",
+    "title": "{rpt} (R package template)",
+    "section": "",
+    "text": "The goal of {rpt} is to …\n\n\nYou can install the development version of {rpt} from GitHub with:\n# install.packages(\"pak\")\npak::pak(\"UCD-SERG/rpt\")\n\n\n\nThis is a basic example which shows you how to solve a common problem:\nlibrary(rpt)\n## basic example code\n\n\n\n\n\nWhen building the pkgdown documentation site with pkgdown::build_site(), the function needs to download external JavaScript and CSS dependencies from CDNs (Content Delivery Networks). If you’re working in a restricted network environment, you’ll need to ensure access to the following CDNs:\n\nhttps://cdnjs.cloudflare.com/ - For headroom.js (sticky header functionality)\nhttps://cdn.jsdelivr.net/ - For bootstrap-toc.js (table of contents) and other Bootstrap dependencies\n\nWithout access to these CDNs, pkgdown::build_site() will fail with errors like:\nError: cannot open URL 'https://cdnjs.cloudflare.com/ajax/libs/headroom/0.11.0/headroom.min.js'\nThese dependencies are automatically cached after the first download, so subsequent builds will be faster and won’t require network access unless the cache is cleared.\n\n\n\n\nIf you’re looking for alternative R package templates, you may also want to consider:\n\nr.pkg.template - A comprehensive R package template from Insights Engineering\n\n\n\n\nPlease note that the {rpt} project is released with a Contributor Code of Conduct. By contributing to this project, you agree to abide by its terms.",
+    "crumbs": [
+      "Documentation",
+      "Home"
+    ]
+  },
+  {
+    "objectID": "index.html#installation",
+    "href": "index.html#installation",
+    "title": "{rpt} (R package template)",
+    "section": "",
+    "text": "You can install the development version of {rpt} from GitHub with:\n# install.packages(\"pak\")\npak::pak(\"UCD-SERG/rpt\")",
+    "crumbs": [
+      "Documentation",
+      "Home"
+    ]
+  },
+  {
+    "objectID": "index.html#example",
+    "href": "index.html#example",
+    "title": "{rpt} (R package template)",
+    "section": "",
+    "text": "This is a basic example which shows you how to solve a common problem:\nlibrary(rpt)\n## basic example code",
+    "crumbs": [
+      "Documentation",
+      "Home"
+    ]
+  },
+  {
+    "objectID": "index.html#development",
+    "href": "index.html#development",
+    "title": "{rpt} (R package template)",
+    "section": "",
+    "text": "When building the pkgdown documentation site with pkgdown::build_site(), the function needs to download external JavaScript and CSS dependencies from CDNs (Content Delivery Networks). If you’re working in a restricted network environment, you’ll need to ensure access to the following CDNs:\n\nhttps://cdnjs.cloudflare.com/ - For headroom.js (sticky header functionality)\nhttps://cdn.jsdelivr.net/ - For bootstrap-toc.js (table of contents) and other Bootstrap dependencies\n\nWithout access to these CDNs, pkgdown::build_site() will fail with errors like:\nError: cannot open URL 'https://cdnjs.cloudflare.com/ajax/libs/headroom/0.11.0/headroom.min.js'\nThese dependencies are automatically cached after the first download, so subsequent builds will be faster and won’t require network access unless the cache is cleared.",
+    "crumbs": [
+      "Documentation",
+      "Home"
+    ]
+  },
+  {
+    "objectID": "index.html#other-r-package-template-options",
+    "href": "index.html#other-r-package-template-options",
+    "title": "{rpt} (R package template)",
+    "section": "",
+    "text": "If you’re looking for alternative R package templates, you may also want to consider:\n\nr.pkg.template - A comprehensive R package template from Insights Engineering",
+    "crumbs": [
+      "Documentation",
+      "Home"
+    ]
+  },
+  {
+    "objectID": "index.html#code-of-conduct",
+    "href": "index.html#code-of-conduct",
+    "title": "{rpt} (R package template)",
+    "section": "",
+    "text": "Please note that the {rpt} project is released with a Contributor Code of Conduct. By contributing to this project, you agree to abide by its terms.",
+    "crumbs": [
+      "Documentation",
+      "Home"
+    ]
+  },
+  {
+    "objectID": "man/example_function.html",
+    "href": "man/example_function.html",
+    "title": "rpt",
+    "section": "",
+    "text": "This is an example function that demonstrates basic functionality.\n\nexample_function(x)\n\n\n\n\nx\n\n\nA numeric vector\n\n\nThe median of the input vector\n\n\nlibrary(\"rpt\")\n\nexample_function(c(1, 2, 3, 4, 5))\n\n[1] 3",
+    "crumbs": [
+      "Documentation",
+      "Reference",
+      "example_function"
+    ]
+  },
+  {
+    "objectID": "man/example_function.html#example-function",
+    "href": "man/example_function.html#example-function",
+    "title": "rpt",
+    "section": "",
+    "text": "This is an example function that demonstrates basic functionality.\n\nexample_function(x)\n\n\n\n\nx\n\n\nA numeric vector\n\n\nThe median of the input vector\n\n\nlibrary(\"rpt\")\n\nexample_function(c(1, 2, 3, 4, 5))\n\n[1] 3",
+    "crumbs": [
+      "Documentation",
+      "Reference",
+      "example_function"
+    ]
+  },
+  {
+    "objectID": "vignettes/getting-started-revealjs.html#introduction",
+    "href": "vignettes/getting-started-revealjs.html#introduction",
+    "title": "Getting Started",
+    "section": "1 Introduction",
+    "text": "1 Introduction\nThis vignette provides an introduction to the {rpt} package."
+  },
+  {
+    "objectID": "vignettes/getting-started-revealjs.html#basic-usage",
+    "href": "vignettes/getting-started-revealjs.html#basic-usage",
+    "title": "Getting Started",
+    "section": "2 Basic Usage",
+    "text": "2 Basic Usage\nHere’s a basic example:\n\n#&gt; [1] 3"
+  },
+  {
+    "objectID": "vignettes/getting-started-revealjs.html#next-steps",
+    "href": "vignettes/getting-started-revealjs.html#next-steps",
+    "title": "Getting Started",
+    "section": "3 Next Steps",
+    "text": "3 Next Steps\nFor more information, see the package documentation."
+  },
+  {
+    "objectID": "vignettes/getting-started.html#introduction",
+    "href": "vignettes/getting-started.html#introduction",
+    "title": "Getting Started",
+    "section": "\n1 Introduction",
+    "text": "1 Introduction\nThis vignette provides an introduction to the rpt package.",
+    "crumbs": [
+      "Documentation",
+      "Articles",
+      "Getting Started"
+    ]
+  },
+  {
+    "objectID": "vignettes/getting-started.html#basic-usage",
+    "href": "vignettes/getting-started.html#basic-usage",
+    "title": "Getting Started",
+    "section": "\n2 Basic Usage",
+    "text": "2 Basic Usage\nHere’s a basic example:\n\n#&gt; [1] 3",
+    "crumbs": [
+      "Documentation",
+      "Articles",
+      "Getting Started"
+    ]
+  },
+  {
+    "objectID": "vignettes/getting-started.html#next-steps",
+    "href": "vignettes/getting-started.html#next-steps",
+    "title": "Getting Started",
+    "section": "\n3 Next Steps",
+    "text": "3 Next Steps\nFor more information, see the package documentation.",
+    "crumbs": [
+      "Documentation",
+      "Articles",
+      "Getting Started"
+    ]
+  }
+]
