@@ -1,0 +1,342 @@
+---
+title: "Package Function Structure"
+author: "UC Davis Seroepidemiology Research Group (UCD-SERG)"
+date: "`r Sys.Date()`"
+format:
+  revealjs:
+    output-file: package-structure-revealjs.html
+  html: default
+---
+
+```{r}
+#| include: false
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>",
+  fig.width = 7,
+  fig.height = 5
+)
+# Check if we're rendering to a format that supports HTML widgets
+is_html_output <- knitr::is_html_output()
+```
+
+```{r setup}
+#| message: false
+library(rpt)
+```
+
+## Overview
+
+This article demonstrates how to visualize the structure and dependencies of package functions using the [`foodwebr`](https://lewinfox.com/foodwebr/) package. Understanding function dependencies helps developers:
+
+- Navigate and understand codebases more quickly
+- Identify potential refactoring opportunities
+- Document architecture and design decisions
+- Onboard new contributors more effectively
+
+## What is foodwebr?
+
+The `foodwebr` package creates dependency graphs showing which functions call which other functions. These visualizations are particularly useful for:
+
+- Exploring unfamiliar codebases
+- Understanding function relationships
+- Identifying central or isolated functions
+- Planning refactoring efforts
+
+## Installing foodwebr
+
+If you don't have `foodwebr` installed, you can install it from CRAN:
+
+```{r}
+#| eval: false
+install.packages("foodwebr")
+```
+
+Or from GitHub for the latest development version:
+
+```{r}
+#| eval: false
+devtools::install_github("lewinfox/foodwebr")
+```
+
+## Visualizing Package Structure
+
+### Basic Usage
+
+The `foodweb()` function analyzes function dependencies. When examining a package, you typically want to look at specific functions or the entire package namespace:
+
+```{r}
+#| message: false
+#| eval: !expr requireNamespace("foodwebr", quietly = TRUE)
+library(foodwebr)
+
+# Create a foodweb for the example_function
+fw <- foodweb(FUN = example_function)
+fw
+```
+
+### Plotting the Dependency Graph
+
+The `plot()` method creates an interactive visualization using DiagrammeR:
+
+```{r}
+#| label: fig-basic-foodweb
+#| fig-cap: "Basic function dependency graph for example_function"
+#| eval: !expr requireNamespace("foodwebr", quietly = TRUE) && is_html_output
+plot(fw)
+```
+
+::: {.callout-note}
+## Understanding the Graph
+
+- **Nodes** represent individual functions
+- **Edges** (arrows) show function calls
+- An arrow from A to B means "A calls B"
+- Isolated nodes indicate functions with no dependencies or dependents
+:::
+
+### Filtering Options
+
+By default, `foodwebr` filters to show only functions directly related to the specified function. You can control this behavior:
+
+```{r}
+#| eval: !expr requireNamespace("foodwebr", quietly = TRUE)
+# Show only connected functions (default)
+fw_filtered <- foodweb(FUN = example_function, filter = TRUE)
+
+# Show all functions in the environment
+fw_all <- foodweb(FUN = example_function, filter = FALSE)
+```
+
+### Examining the Entire Package
+
+To see all exported and internal functions in the package:
+
+```{r}
+#| eval: !expr requireNamespace("foodwebr", quietly = TRUE)
+# Get the package namespace environment
+pkg_env <- asNamespace("rpt")
+
+# Create foodweb for entire package
+fw_pkg <- foodweb(env = pkg_env)
+fw_pkg
+```
+
+```{r}
+#| label: fig-package-foodweb
+#| fig-cap: "Complete dependency graph for all package functions"
+#| eval: !expr requireNamespace("foodwebr", quietly = TRUE) && is_html_output
+plot(fw_pkg)
+```
+
+## Analyzing Dependencies
+
+### Understanding Function Roles
+
+From the dependency graph, you can identify different types of functions:
+
+- **Leaf functions**: Functions that don't call any other package functions (only base R or external packages)
+- **Root functions**: Functions that are called by many others but don't call package functions themselves
+- **Hub functions**: Functions that both call and are called by many functions
+- **Isolated functions**: Functions with no connections to others
+
+### Example Analysis
+
+For our package:
+
+```{r}
+#| eval: !expr requireNamespace("foodwebr", quietly = TRUE)
+# Convert to text representation for inspection
+cat(as.character(fw_pkg))
+```
+
+::: {.callout-tip}
+## Dependency Patterns
+
+In well-designed packages, you typically see:
+
+1. **Clear hierarchy**: Lower-level utility functions are called by higher-level API functions
+2. **Limited cross-dependencies**: Functions in the same "layer" don't call each other excessively
+3. **Focused functions**: Each function has a clear purpose with limited dependencies
+
+In the `rpt` package, we can see this pattern:
+
+- `validate_input()` is a low-level helper (no package dependencies)
+- `clean_data()` calls `validate_input()` 
+- `calculate_statistic()` calls `clean_data()`
+- `format_result()` is a low-level formatter (no package dependencies)
+- `example_function()` is a high-level API that calls `calculate_statistic()` and `format_result()`
+- `calculate_summary()` is another high-level API that calls `clean_data()` and `example_function()`
+
+This creates a clear layered architecture with well-separated concerns.
+:::
+
+## Package Architecture
+
+### Current Structure
+
+Let's examine the actual structure of the `rpt` package:
+
+```{r}
+#| eval: !expr requireNamespace("foodwebr", quietly = TRUE)
+# List all functions in the package
+pkg_functions <- ls(asNamespace("rpt"))
+cat("Package functions:\n")
+cat(paste("-", sort(pkg_functions), collapse = "\n"))
+```
+
+The dependency relationships are:
+
+- **Exported functions** (user-facing API):
+  - `example_function()`: Calls `calculate_statistic()` → `format_result()`
+  - `calculate_summary()`: Calls `clean_data()` → `example_function()`
+
+- **Internal functions** (implementation details):
+  - `validate_input()`: No package dependencies (leaf function)
+  - `clean_data()`: Calls `validate_input()`
+  - `calculate_statistic()`: Calls `clean_data()`
+  - `format_result()`: No package dependencies (leaf function)
+
+This architecture demonstrates good separation of concerns with clear data flow from validation through cleaning to calculation and formatting.
+
+## Advanced Usage
+
+### Using with tidygraph
+
+The `tidygraph` package provides powerful tools for graph analysis. You can convert a `foodweb` object to work with these tools:
+
+```{r}
+#| eval: !expr requireNamespace("foodwebr", quietly = TRUE) && requireNamespace("tidygraph", quietly = TRUE)
+if (requireNamespace("tidygraph", quietly = TRUE)) {
+  tg <- tidygraph::as_tbl_graph(fw_pkg)
+  print(tg)
+}
+```
+
+### Customizing Visualizations
+
+You can pass additional arguments to customize the graph appearance:
+
+```{r}
+#| eval: false
+# These arguments are passed to DiagrammeR::grViz()
+plot(fw_pkg, 
+     width = 800, 
+     height = 600)
+```
+
+### Exporting as Text
+
+Get the graphviz DOT representation:
+
+```{r}
+#| eval: !expr requireNamespace("foodwebr", quietly = TRUE)
+# As text
+foodweb_text <- foodweb(env = asNamespace("rpt"), as.text = TRUE)
+cat(foodweb_text)
+```
+
+## Practical Applications
+
+### Code Review
+
+Use dependency graphs during code review to:
+
+- Verify that new functions follow existing architectural patterns
+- Identify unexpected dependencies
+- Ensure proper separation of concerns
+- Detect circular dependencies
+
+### Refactoring
+
+Before refactoring:
+
+1. Generate a dependency graph of the affected area
+2. Identify all functions that will be impacted
+3. Plan changes to minimize ripple effects
+4. After refactoring, regenerate the graph to verify improvements
+
+### Documentation
+
+Include dependency graphs in:
+
+- Developer documentation
+- Architecture decision records
+- Package vignettes (like this one!)
+- README files for complex packages
+
+::: {.callout-important}
+## Keeping Documentation Updated
+
+When adding new functions or modifying dependencies, regenerate the foodweb graphs to keep documentation current. Consider adding automated checks in your CI/CD pipeline.
+:::
+
+## Exploring Specific Functions
+
+You can focus on specific functions to understand their dependencies:
+
+### Example Function Dependencies
+
+```{r}
+#| label: fig-example-function
+#| fig-cap: "Dependency graph for example_function showing all related functions"
+#| eval: !expr requireNamespace("foodwebr", quietly = TRUE) && is_html_output
+fw_example <- foodweb(FUN = example_function)
+plot(fw_example)
+```
+
+### Summary Function Dependencies
+
+```{r}
+#| label: fig-summary-function
+#| fig-cap: "Dependency graph for calculate_summary showing its relationships"
+#| eval: !expr requireNamespace("foodwebr", quietly = TRUE) && is_html_output
+fw_summary <- foodweb(FUN = calculate_summary)
+plot(fw_summary)
+```
+
+These focused views help understand:
+
+- What functions a specific function depends on (its dependencies)
+- What functions depend on a specific function (its dependents)
+- The complete call chain for a given function
+
+## Best Practices
+
+When designing package architecture:
+
+1. **Minimize dependencies**: Each function should have a clear, focused purpose
+2. **Avoid circular dependencies**: A should not call B if B calls A
+3. **Layer your functions**: Separate low-level utilities from high-level APIs
+4. **Document dependencies**: Use `foodwebr` graphs in your documentation
+5. **Review regularly**: Check dependency graphs during code review
+
+## Learn More
+
+- **foodwebr documentation**: <https://lewinfox.com/foodwebr/>
+- **Package website**: <https://ucd-serg.github.io/rpt/>
+- **GitHub repository**: <https://github.com/UCD-SERG/rpt>
+- **DiagrammeR**: <https://rich-iannone.github.io/DiagrammeR/>
+- **tidygraph**: <https://tidygraph.data-imaginist.com/>
+
+## Summary
+
+This article demonstrated how to use `foodwebr` to visualize and understand package function dependencies. Key takeaways:
+
+- `foodwebr` creates interactive dependency graphs
+- Filtering options help focus on specific functions or show entire packages
+- Dependency graphs aid in code review, refactoring, and documentation
+- Integration with `tidygraph` enables advanced graph analysis
+- Regular visualization helps maintain clean architecture
+
+The `rpt` package demonstrates a clean layered architecture with:
+- Low-level utility functions (`validate_input()`, `format_result()`)
+- Mid-level processing functions (`clean_data()`, `calculate_statistic()`)
+- High-level API functions (`example_function()`, `calculate_summary()`)
+
+This structure makes the code easier to understand, test, and maintain.
+
+## References
+
+::: {#refs}
+:::
