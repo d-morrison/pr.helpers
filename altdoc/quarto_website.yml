@@ -1,0 +1,56 @@
+project:
+  type: website
+  output-dir: ../docs/
+
+# Note: freeze functionality can be set at a project level or for individual .qmd files
+# execute:
+#   freeze: false
+
+website:
+  title: "$ALTDOC_PACKAGE_NAME"
+  code-links: true
+  navbar:
+    search: true
+    right:
+      - icon: github
+        href: $ALTDOC_PACKAGE_URL_GITHUB
+        aria-label: $ALTDOC_PACKAGE_NAME GitHub
+  sidebar:
+    collapse-level: 1
+    contents:
+      - text: Home
+        file: index.md
+      - section: $ALTDOC_VIGNETTE_BLOCK
+      - section: $ALTDOC_MAN_BLOCK
+      - text: News
+        file: $ALTDOC_NEWS
+      - text: Changelog
+        file: $ALTDOC_CHANGELOG
+      - text: License
+        file: $ALTDOC_LICENSE
+      - text: Licence
+        file: $ALTDOC_LICENCE
+      - text: Code of conduct
+        file: $ALTDOC_CODE_OF_CONDUCT
+      - text: Citation
+        file: $ALTDOC_CITATION
+
+format:
+  html:
+    code-link: true # enables downlit; see https://altdoc.etiennebacher.com/#/man/render_docs.md#auto-link-for-quarto-websites
+    theme:
+      light: default
+      dark: darkly
+    css: styles.css
+    number-sections: false
+    code-fold: show
+    echo: true
+    code-copy: true
+    code-overflow: scroll
+    title-block-style: none
+    toc: true
+    grid:
+      sidebar-width: 340px
+      margin-width: 340px
+
+
