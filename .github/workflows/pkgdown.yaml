@@ -1,0 +1,248 @@
+# Deploys pkgdown for Pull Requests, tags, and pushes to main branch
+# PRs are deployed to /preview/pr<number>/
+# Tags are deployed to /<tag>/
+# copied from https://github.com/rstudio/education-workflows/blob/main/examples/pkgdown.yaml
+# referred from https://github.com/r-lib/actions/issues/865
+# more info: https://github.com/rstudio/education-workflows/tree/main/examples#deploy-pkgdown-to-github-pages-with-pr-previews-and-tagged-versions
+on:
+  pull_request:
+    branches:
+      - main
+    types:
+      - opened
+      - reopened
+      - synchronize
+      - closed
+    paths:
+      - 'man/**'
+      - 'pkgdown/**'
+      - 'vignettes/**'
+      - '_quarto.yml'
+      - '.github/workflows/pkgdown.yaml'
+      - 'Readme.md'
+  push:
+    tags:
+      - 'v[0-9]+.[0-9]+.[0-9]+'         # build on version tags
+      - '!v[0-9]+.[0-9]+.[0-9]+.[0-9]+' # but not if version involves a dev component
+    branches:
+      - main
+  workflow_dispatch:
+    inputs:
+      tag:
+        description: Tag to deploy
+        required: false
+        default: ''
+
+name: pkgdown
+
+jobs:
+  pkgdown-build:
+    runs-on: ubuntu-latest
+    container:
+      image: rocker/verse:latest
+    if: ${{ !(github.event_name == 'pull_request' && github.event.action == 'closed') }}
+     # Only restrict concurrency for non-PR jobs
+    concurrency:
+      group: pkgdown-${{ github.event_name != 'pull_request' || github.run_id }}
+    env:
+      GITHUB_PAT: ${{ secrets.GITHUB_TOKEN }}
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Configure git safe directory
+        run: |
+          git config --global --add safe.directory /__w/rpt/rpt
+
+      - name: Configure git
+        run: |
+          git config --local user.name "$GITHUB_ACTOR"
+          git config --local user.email "$GITHUB_ACTOR@users.noreply.github.com"
+
+      - uses: r-lib/actions/pr-fetch@v2
+        if: ${{ github.event_name == 'pull_request' }}
+        with:
+          repo-token: ${{ github.token }}
+
+      - uses: r-lib/actions/setup-pandoc@v2
+
+      - uses: r-lib/actions/setup-r@v2
+        with:
+          use-public-rspm: true
+
+      - uses: r-lib/actions/setup-r-dependencies@v2
+        with:
+          needs: |
+            connect
+            website
+          extra-packages: |
+            local::.
+            r-lib/pkgdown
+
+      # If event is a PR, set subdir to 'preview/pr<pr_number>'
+      - name: "[PR] Set documentation subdirectory"
+        if: github.event_name == 'pull_request'
+        run: |
+          echo "PKGDOWN_DEV_MODE=unreleased" >> $GITHUB_ENV
+          echo "subdir=preview/pr${{ github.event.number }}" >> $GITHUB_ENV
+
+      # If event is a tag, set subdir to '<tag_name>'
+      - name: "[tag] Set documentation subdirectory"
+        if: github.event_name == 'push' && startsWith(github.ref, 'refs/tags/v')
+        run: |
+          echo "PKGDOWN_DEV_MODE=release" >> $GITHUB_ENV
+          echo "subdir=${GITHUB_REF#refs/tags/}" >> $GITHUB_ENV
+
+      # If event is workflow_dispatch, set subdir to 'inputs.tag'
+      - name: '[dispatch] Set documentation subdirectory'
+        if: github.event_name == 'workflow_dispatch'
+        run: |
+          echo "subdir=${{ github.event.inputs.tag }}" >> $GITHUB_ENV
+
+      # If event is a push to main (not a tag), set subdir to empty (deploy to root)
+      - name: "[main] Set documentation subdirectory to root"
+        if: github.event_name == 'push' && github.ref == 'refs/heads/main'
+        run: |
+          echo "PKGDOWN_DEV_MODE=release" >> $GITHUB_ENV
+          echo "subdir=" >> $GITHUB_ENV
+
+      - name: Debug subdir
+        run: |
+          echo "Subdir is set to: ${{ env.subdir }}"
+
+      - name: Pre-render Quarto documents to all formats
+        run: |
+          set -e
+          Rscript .github/scripts/pre-render-quarto.R
+
+      - name: Build pkgdown site
+        id: build
+        shell: Rscript {0}
+        run: |
+          # Build the site (Quarto articles are not in _pkgdown.yml to prevent pkgdown from rendering them)
+          pkg <- pkgdown::as_pkgdown(".")
+          pkgdown::build_site(pkg, preview = FALSE, install = FALSE)
+          
+          # Copy pre-rendered Quarto HTML files and alternate formats to docs/articles
+          quarto_files <- c(
+            "vignettes/quarto_vignette.html",
+            "vignettes/articles/quarto_article.html"
+          )
+          for (src in quarto_files) {
+            if (file.exists(src)) {
+              dest <- file.path("docs/articles", basename(src))
+              file.copy(src, dest, overwrite = TRUE)
+              cat("Copied:", src, "to", dest, "\n")
+            }
+          }
+          
+          # Copy alternate format files (RevealJS and DOCX)
+          alt_files <- list.files("vignettes", pattern = "(-revealjs\\.html|\\.docx)$", full.names = TRUE, recursive = TRUE)
+          for (src in alt_files) {
+            dest <- file.path("docs/articles", basename(src))
+            file.copy(src, dest, overwrite = TRUE)
+            cat("Copied alternate format:", src, "to", dest, "\n")
+          }
+
+      - name: Post-process to add alternate format links
+        run: |
+          set -e
+          Rscript .github/scripts/add-format-links.R
+
+      - name: Deploy to GitHub Pages
+        id: deploy
+        run: |
+          set -e
+          
+          # Determine subdirectory
+          subdir="${{ env.subdir }}"
+          
+          # Configure git
+          git config --local user.email "github-actions[bot]@users.noreply.github.com"
+          git config --local user.name "github-actions[bot]"
+          
+          # Checkout gh-pages branch
+          git fetch origin gh-pages:gh-pages || git checkout --orphan gh-pages
+          git checkout gh-pages
+          
+          # Clean the subdirectory if it exists
+          if [ -n "$subdir" ]; then
+            rm -rf "$subdir" || true
+            mkdir -p "$subdir"
+            # Copy docs to subdirectory
+            cp -r docs/* "$subdir/"
+          else
+            # Clean root and copy docs
+            git rm -rf . || true
+            cp -r docs/* .
+          fi
+          
+          # Commit and push
+          git add .
+          git commit -m "Built site for rpt@$(git rev-parse --short HEAD): $(date -u +%Y-%m-%d)" || echo "No changes to commit"
+          git push origin gh-pages
+          
+          # Switch back to original branch
+          git checkout -
+          
+          # Report deployed site URL
+          if [ -n "$subdir" ]; then
+            echo "url=https://ucd-serg.github.io/rpt/$subdir" >> $GITHUB_OUTPUT
+          else
+            echo "url=https://ucd-serg.github.io/rpt/" >> $GITHUB_OUTPUT
+          fi
+
+      - name: Notify pkgdown deployment
+        if: github.event_name == 'pull_request'
+        uses: hasura/comment-progress@v2.2.0
+        with:
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          repository: ${{ github.repository }}
+          number: ${{ github.event.number }}
+          id: pkgdown-deploy
+          # recreate: true ensures the preview comment is always visible at the bottom
+          # of the PR by deleting the old comment and creating a new one.
+          # Alternative: Use append: false to update in place (may get hidden in long PRs)
+          recreate: true
+          message: >
+            :book: ${{ steps.deploy.outputs.url }}
+
+            Preview documentation for this PR (at commit ${{ github.event.pull_request.head.sha }})
+
+  pkgdown-clean:
+    if: ${{ github.event_name == 'pull_request' && github.event.action == 'closed' }}
+    runs-on: ubuntu-latest
+    container:
+      image: rocker/verse:latest
+    env:
+      GITHUB_PAT: ${{ secrets.GITHUB_TOKEN }}
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: "gh-pages"
+
+      - name: Configure git safe directory
+        run: |
+          git config --global --add safe.directory /__w/rpt/rpt
+
+      - name: Clean up PR Preview
+        run: |
+          git config --local user.name "$GITHUB_ACTOR"
+          git config --local user.email "$GITHUB_ACTOR@users.noreply.github.com"
+
+          preview_dir="preview/pr${{ github.event.pull_request.number }}"
+          if [ -d "$preview_dir" ]; then
+            git rm -r $preview_dir
+            git commit -m "Remove $preview_dir (GitHub Actions)" || echo 'No preview to remove'
+            git push origin || echo 'No preview to remove'
+          else
+            echo 'No preview to remove'
+          fi
+
+      - name: Notify pkgdown cleanup
+        uses: hasura/comment-progress@v2.2.0
+        with:
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          repository: ${{ github.repository }}
+          number: ${{ github.event.number }}
+          id: pkgdown-deploy
+          delete: true

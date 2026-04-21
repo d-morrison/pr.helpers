@@ -1,0 +1,6 @@
+linters: linters_with_defaults(
+   return_linter = NULL,
+   pipe_consistency_linter(pipe = "|>"),
+   trailing_whitespace_linter = NULL)
+encoding: "UTF-8"
+exclusions: list("vignettes/quarto_vignette.qmd", "vignettes/articles/quarto_article.qmd")
