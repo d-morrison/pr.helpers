@@ -1,5 +1,6 @@
 # rpt (development version)
 
+* Added `pr_request_url()` to generate GitHub pull request and GitLab merge request URLs from git remotes.
 * Switched from pkgdown to altdoc for documentation generation. Now using Quarto Website for documentation with native math equation support via MathJax.
 * Removed pkgdown-specific configurations and workflows.
 * Retained RevealJS multi-format support for Quarto vignettes and articles.
