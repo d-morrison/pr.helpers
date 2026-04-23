@@ -15,7 +15,7 @@
     "href": "CONTRIBUTING.html",
     "title": "Contributing to pr.helpers",
     "section": "",
-    "text": "This document outlines how to propose a change to this project. For a detailed discussion on contributing to this and other packages, please see the tidyverse’s development contributing guide and code review principles.\n\n\nYou can fix typos, spelling mistakes, or grammatical errors in the documentation directly using the GitHub web interface, as long as the changes are made in the source file. This generally means you’ll need to edit roxygen2 comments in an .R, not a .Rd file. You can find the .R file that generates the .Rd by reading the comment in the first line.\n\n\n\nIf you want to make a bigger change, it’s a good idea to first file an issue and make sure someone from the team agrees that it’s needed. If you’ve found a bug, please file an issue that illustrates the bug with a minimal reprex (this will also help you write a unit test, if needed). See the tidyverse guide on how to create a great issue for more advice.\n\n\n\nFork the package and clone onto your computer. If you haven’t done this before, we recommend using usethis::create_from_github(\"UCD-SERG/pr.helpers\", fork = TRUE).\nInstall all development dependencies with devtools::install_dev_deps(), and then make sure the package passes R CMD check by running devtools::check(). If R CMD check doesn’t pass cleanly, it’s a good idea to ask for help before continuing.\nCreate a Git branch for your pull request (PR). We recommend using usethis::pr_init(\"brief-description-of-change\").\nMake your changes, commit to git, and then create a PR by running usethis::pr_push(), and following the prompts in your browser.\n\nThe title of your PR should briefly describe the change.\nThe body of your PR should contain Fixes #issue-number.\nYour changes should conform to the tidyverse code style guidelines and design principles described below.\n\nFor user-facing changes, add a bullet to the top of NEWS.md (i.e. just below the first header). Follow the style described in https://style.tidyverse.org/news.html.\nGitHub will automatically check your PR to see if the package is still functional on Mac OS, Windows, and Linux; if not, you will receive an email describing the problems.\n\nFor help decoding errors, try this resource: https://github.com/r-lib/actions?tab=readme-ov-file#where-to-find-help.\n\n\n\n\n\n\nNew code should follow the tidyverse style guide and design principles. You can use the lintr package to automatically check for some style and design issues and the styler package to automatically correct some issues. Please don’t restyle code that has nothing to do with your PR.\nWe use roxygen2, with Markdown syntax, for documentation.\nWe use testthat for unit tests. Contributions with test cases included are easier to accept.\n\n\n\n\n\nPlease note that this project is released with a Contributor Code of Conduct. By contributing to this project you agree to abide by its terms.",
+    "text": "This document outlines how to propose a change to this project. For a detailed discussion on contributing to this and other packages, please see the tidyverse’s development contributing guide and code review principles.\n\n\nYou can fix typos, spelling mistakes, or grammatical errors in the documentation directly using the GitHub web interface, as long as the changes are made in the source file. This generally means you’ll need to edit roxygen2 comments in an .R, not a .Rd file. You can find the .R file that generates the .Rd by reading the comment in the first line.\n\n\n\nIf you want to make a bigger change, it’s a good idea to first file an issue and make sure someone from the team agrees that it’s needed. If you’ve found a bug, please file an issue that illustrates the bug with a minimal reprex (this will also help you write a unit test, if needed). See the tidyverse guide on how to create a great issue for more advice.\n\n\n\nFork the package and clone onto your computer. If you haven’t done this before, we recommend using usethis::create_from_github(\"d-morrison/pr.helpers\", fork = TRUE).\nInstall all development dependencies with devtools::install_dev_deps(), and then make sure the package passes R CMD check by running devtools::check(). If R CMD check doesn’t pass cleanly, it’s a good idea to ask for help before continuing.\nCreate a Git branch for your pull request (PR). We recommend using usethis::pr_init(\"brief-description-of-change\").\nMake your changes, commit to git, and then create a PR by running usethis::pr_push(), and following the prompts in your browser.\n\nThe title of your PR should briefly describe the change.\nThe body of your PR should contain Fixes #issue-number.\nYour changes should conform to the tidyverse code style guidelines and design principles described below.\n\nFor user-facing changes, add a bullet to the top of NEWS.md (i.e. just below the first header). Follow the style described in https://style.tidyverse.org/news.html.\nGitHub will automatically check your PR to see if the package is still functional on Mac OS, Windows, and Linux; if not, you will receive an email describing the problems.\n\nFor help decoding errors, try this resource: https://github.com/r-lib/actions?tab=readme-ov-file#where-to-find-help.\n\n\n\n\n\n\nNew code should follow the tidyverse style guide and design principles. You can use the lintr package to automatically check for some style and design issues and the styler package to automatically correct some issues. Please don’t restyle code that has nothing to do with your PR.\nWe use roxygen2, with Markdown syntax, for documentation.\nWe use testthat for unit tests. Contributions with test cases included are easier to accept.\n\n\n\n\n\nPlease note that this project is released with a Contributor Code of Conduct. By contributing to this project you agree to abide by its terms.",
     "crumbs": [
       "Documentation",
       "Contributing"
@@ -37,7 +37,7 @@
     "href": "CONTRIBUTING.html#bigger-changes",
     "title": "Contributing to pr.helpers",
     "section": "",
-    "text": "If you want to make a bigger change, it’s a good idea to first file an issue and make sure someone from the team agrees that it’s needed. If you’ve found a bug, please file an issue that illustrates the bug with a minimal reprex (this will also help you write a unit test, if needed). See the tidyverse guide on how to create a great issue for more advice.\n\n\n\nFork the package and clone onto your computer. If you haven’t done this before, we recommend using usethis::create_from_github(\"UCD-SERG/pr.helpers\", fork = TRUE).\nInstall all development dependencies with devtools::install_dev_deps(), and then make sure the package passes R CMD check by running devtools::check(). If R CMD check doesn’t pass cleanly, it’s a good idea to ask for help before continuing.\nCreate a Git branch for your pull request (PR). We recommend using usethis::pr_init(\"brief-description-of-change\").\nMake your changes, commit to git, and then create a PR by running usethis::pr_push(), and following the prompts in your browser.\n\nThe title of your PR should briefly describe the change.\nThe body of your PR should contain Fixes #issue-number.\nYour changes should conform to the tidyverse code style guidelines and design principles described below.\n\nFor user-facing changes, add a bullet to the top of NEWS.md (i.e. just below the first header). Follow the style described in https://style.tidyverse.org/news.html.\nGitHub will automatically check your PR to see if the package is still functional on Mac OS, Windows, and Linux; if not, you will receive an email describing the problems.\n\nFor help decoding errors, try this resource: https://github.com/r-lib/actions?tab=readme-ov-file#where-to-find-help.\n\n\n\n\n\n\nNew code should follow the tidyverse style guide and design principles. You can use the lintr package to automatically check for some style and design issues and the styler package to automatically correct some issues. Please don’t restyle code that has nothing to do with your PR.\nWe use roxygen2, with Markdown syntax, for documentation.\nWe use testthat for unit tests. Contributions with test cases included are easier to accept.",
+    "text": "If you want to make a bigger change, it’s a good idea to first file an issue and make sure someone from the team agrees that it’s needed. If you’ve found a bug, please file an issue that illustrates the bug with a minimal reprex (this will also help you write a unit test, if needed). See the tidyverse guide on how to create a great issue for more advice.\n\n\n\nFork the package and clone onto your computer. If you haven’t done this before, we recommend using usethis::create_from_github(\"d-morrison/pr.helpers\", fork = TRUE).\nInstall all development dependencies with devtools::install_dev_deps(), and then make sure the package passes R CMD check by running devtools::check(). If R CMD check doesn’t pass cleanly, it’s a good idea to ask for help before continuing.\nCreate a Git branch for your pull request (PR). We recommend using usethis::pr_init(\"brief-description-of-change\").\nMake your changes, commit to git, and then create a PR by running usethis::pr_push(), and following the prompts in your browser.\n\nThe title of your PR should briefly describe the change.\nThe body of your PR should contain Fixes #issue-number.\nYour changes should conform to the tidyverse code style guidelines and design principles described below.\n\nFor user-facing changes, add a bullet to the top of NEWS.md (i.e. just below the first header). Follow the style described in https://style.tidyverse.org/news.html.\nGitHub will automatically check your PR to see if the package is still functional on Mac OS, Windows, and Linux; if not, you will receive an email describing the problems.\n\nFor help decoding errors, try this resource: https://github.com/r-lib/actions?tab=readme-ov-file#where-to-find-help.\n\n\n\n\n\n\nNew code should follow the tidyverse style guide and design principles. You can use the lintr package to automatically check for some style and design issues and the styler package to automatically correct some issues. Please don’t restyle code that has nothing to do with your PR.\nWe use roxygen2, with Markdown syntax, for documentation.\nWe use testthat for unit tests. Contributions with test cases included are easier to accept.",
     "crumbs": [
       "Documentation",
       "Contributing"
@@ -59,7 +59,7 @@
     "href": "CITATION.html",
     "title": "Citation",
     "section": "",
-    "text": "Citation\nTo cite package ‘pr.helpers’ in publications use:\n\nLast F (2026). pr.helpers: What the Package Does (One Line, Title Case). R package version 0.0.0.9013, https://github.com/UCD-SERG/pr.helpers.",
+    "text": "Citation\nTo cite package ‘pr.helpers’ in publications use:\n\nMorrison D (2026). pr.helpers: Helpers for Pull and Merge Request Git Workflows. R package version 0.0.0.9013, https://github.com/d-morrison/pr.helpers.",
     "crumbs": [
       "Documentation",
       "Citation"
@@ -163,7 +163,7 @@
     "href": "man/pr.helpers-package.html",
     "title": "pr.helpers",
     "section": "",
-    "text": "What the package does (one paragraph).\n\n\n\nMaintainer: First Last first.last@example.com\n\n\n\nUseful links:\n\n\nhttps://github.com/UCD-SERG/pr.helpers\n\n\nhttps://ucd-serg.github.io/pr.helpers/\n\n\nReport bugs at https://github.com/UCD-SERG/pr.helpers/issues",
+    "text": "Provides helper functions for common pull request and merge request workflows from a local Git repository. Includes utilities for creating and switching branches, fetching requests by number, generating request URLs, and syncing with the default branch across GitHub and GitLab remotes.\n\n\n\nMaintainer: David Morrison 2474437+d-morrison@users.noreply.github.com\n\n\n\nUseful links:\n\n\nhttps://github.com/d-morrison/pr.helpers\n\n\nReport bugs at https://github.com/d-morrison/pr.helpers/issues",
     "crumbs": [
       "Documentation",
       "Reference",
@@ -171,11 +171,11 @@
     ]
   },
   {
-    "objectID": "man/pr.helpers-package.html#pr.helpers-what-the-package-does-one-line-title-case",
-    "href": "man/pr.helpers-package.html#pr.helpers-what-the-package-does-one-line-title-case",
+    "objectID": "man/pr.helpers-package.html#pr.helpers-helpers-for-pull-and-merge-request-git-workflows",
+    "href": "man/pr.helpers-package.html#pr.helpers-helpers-for-pull-and-merge-request-git-workflows",
     "title": "pr.helpers",
     "section": "",
-    "text": "What the package does (one paragraph).\n\n\n\nMaintainer: First Last first.last@example.com\n\n\n\nUseful links:\n\n\nhttps://github.com/UCD-SERG/pr.helpers\n\n\nhttps://ucd-serg.github.io/pr.helpers/\n\n\nReport bugs at https://github.com/UCD-SERG/pr.helpers/issues",
+    "text": "Provides helper functions for common pull request and merge request workflows from a local Git repository. Includes utilities for creating and switching branches, fetching requests by number, generating request URLs, and syncing with the default branch across GitHub and GitLab remotes.\n\n\n\nMaintainer: David Morrison 2474437+d-morrison@users.noreply.github.com\n\n\n\nUseful links:\n\n\nhttps://github.com/d-morrison/pr.helpers\n\n\nReport bugs at https://github.com/d-morrison/pr.helpers/issues",
     "crumbs": [
       "Documentation",
       "Reference",
@@ -187,7 +187,7 @@
     "href": "index.html",
     "title": "{pr.helpers} (PR helpers package)",
     "section": "",
-    "text": "The goal of {pr.helpers} is to …\n\n\nYou can install the development version of {pr.helpers} from GitHub with:\n# install.packages(\"pak\")\npak::pak(\"d-morrison/pr.helpers\")\n\n\n\nThis is a basic example which shows you how to solve a common problem:\nlibrary(pr.helpers)\n## basic example code\n\n\n\n\n\nThis package uses altdoc with Quarto to build its documentation site. To build and preview the documentation locally:\n# Load the package\npkgload::load_all()\n\n# Render the documentation\naltdoc::render_docs()\n\n# Preview the site\naltdoc::preview_docs()\nThe documentation is automatically built and deployed to GitHub Pages via GitHub Actions when changes are pushed to the main branch.\n\n\n\n\nIf you’re looking for alternative R package templates, you may also want to consider:\n\nr.pkg.template - A comprehensive R package template from Insights Engineering\n\n\n\n\nPlease note that the {pr.helpers} project is released with a Contributor Code of Conduct. By contributing to this project, you agree to abide by its terms.",
+    "text": "{pr.helpers} streamlines common pull request (GitHub) and merge request (GitLab) workflows from the command line in an R session.\n\n\nYou can install the development version of {pr.helpers} from GitHub with:\n# install.packages(\"pak\")\npak::pak(\"d-morrison/pr.helpers\")\n\n\n\nThis example builds a pull request URL for a feature branch:\nlibrary(pr.helpers)\npr_request_url(\n  \"https://github.com/acme/widgets.git\",\n  source_branch = \"feature/new-report\",\n  target_branch = \"main\"\n)\n#&gt; [1] \"https://github.com/acme/widgets/compare/main...feature%2Fnew-report?expand=1\"\n\n\n\n\n\nThis package uses altdoc with Quarto to build its documentation site. To build and preview the documentation locally:\n# Load the package\npkgload::load_all()\n\n# Render the documentation\naltdoc::render_docs()\n\n# Preview the site\naltdoc::preview_docs()\nThe documentation is automatically built and deployed to GitHub Pages via GitHub Actions when changes are pushed to the main branch.\n\n\n\n\nPlease note that the {pr.helpers} project is released with a Contributor Code of Conduct. By contributing to this project, you agree to abide by its terms.",
     "crumbs": [
       "Documentation",
       "Home"
@@ -209,7 +209,7 @@
     "href": "index.html#example",
     "title": "{pr.helpers} (PR helpers package)",
     "section": "",
-    "text": "This is a basic example which shows you how to solve a common problem:\nlibrary(pr.helpers)\n## basic example code",
+    "text": "This example builds a pull request URL for a feature branch:\nlibrary(pr.helpers)\npr_request_url(\n  \"https://github.com/acme/widgets.git\",\n  source_branch = \"feature/new-report\",\n  target_branch = \"main\"\n)\n#&gt; [1] \"https://github.com/acme/widgets/compare/main...feature%2Fnew-report?expand=1\"",
     "crumbs": [
       "Documentation",
       "Home"
@@ -221,17 +221,6 @@
     "title": "{pr.helpers} (PR helpers package)",
     "section": "",
     "text": "This package uses altdoc with Quarto to build its documentation site. To build and preview the documentation locally:\n# Load the package\npkgload::load_all()\n\n# Render the documentation\naltdoc::render_docs()\n\n# Preview the site\naltdoc::preview_docs()\nThe documentation is automatically built and deployed to GitHub Pages via GitHub Actions when changes are pushed to the main branch.",
-    "crumbs": [
-      "Documentation",
-      "Home"
-    ]
-  },
-  {
-    "objectID": "index.html#other-r-package-template-options",
-    "href": "index.html#other-r-package-template-options",
-    "title": "{pr.helpers} (PR helpers package)",
-    "section": "",
-    "text": "If you’re looking for alternative R package templates, you may also want to consider:\n\nr.pkg.template - A comprehensive R package template from Insights Engineering",
     "crumbs": [
       "Documentation",
       "Home"
@@ -301,7 +290,7 @@
     "href": "vignettes/articles/quarto_article.html",
     "title": "Advanced Quarto Article",
     "section": "",
-    "text": "UC Davis Seroepidemiology Research Group (UCD-SERG)\n\n2026-04-23\nCode\nlibrary(pr.helpers)",
+    "text": "pr.helpers authors\n\n2026-04-23\nCode\nlibrary(pr.helpers)",
     "crumbs": [
       "Documentation",
       "Articles",
@@ -563,7 +552,7 @@
     "href": "vignettes/quarto_vignette-revealjs.html#references",
     "title": "Quarto Vignette Example",
     "section": "8 References",
-    "text": "8 References\nFor more information, see:\n\nQuarto Documentation\nUsing Quarto with R\nR Core Team (2024)\nUCD-SERG (2024)\n\n\n\n\n\nR Core Team. 2024. R: A Language and Environment for Statistical Computing. R Foundation for Statistical Computing. https://www.R-project.org/.\n\n\nUCD-SERG. 2024. Pr.helpers: R Package Template. https://github.com/UCD-SERG/pr.helpers."
+    "text": "8 References\nFor more information, see:\n\nQuarto Documentation\nUsing Quarto with R\nR Core Team (2024)\npr.helpers authors (2024)\n\n\n\n\n\npr.helpers authors. 2024. Pr.helpers: R Package Template. https://github.com/d-morrison/pr.helpers.\n\n\nR Core Team. 2024. R: A Language and Environment for Statistical Computing. R Foundation for Statistical Computing. https://www.R-project.org/."
   },
   {
     "objectID": "vignettes/quarto_vignette.html",
@@ -666,7 +655,7 @@
     "href": "vignettes/quarto_vignette.html#references",
     "title": "Quarto Vignette Example",
     "section": "\n8 References",
-    "text": "8 References\nFor more information, see:\n\nQuarto Documentation\nUsing Quarto with R\nR Core Team (2024)\nUCD-SERG (2024)",
+    "text": "8 References\nFor more information, see:\n\nQuarto Documentation\nUsing Quarto with R\nR Core Team (2024)\npr.helpers authors (2024)",
     "crumbs": [
       "Documentation",
       "Articles",
