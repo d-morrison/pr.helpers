@@ -1,3 +1,28 @@
+with_git_repo <- function(code) {
+  repo <- withr::local_tempdir()
+  withr::local_dir(repo)
+
+  system2("git", c("init", "-b", "main"), stdout = TRUE, stderr = TRUE)
+  system2(
+    "git",
+    c("config", "user.name", "Test User"),
+    stdout = TRUE,
+    stderr = TRUE
+  )
+  system2(
+    "git",
+    c("config", "user.email", "test@example.com"),
+    stdout = TRUE,
+    stderr = TRUE
+  )
+
+  writeLines("hello", "README.md")
+  system2("git", c("add", "README.md"), stdout = TRUE, stderr = TRUE)
+  system2("git", c("commit", "-m", "init"), stdout = TRUE, stderr = TRUE)
+
+  force(code)
+}
+
 test_that("pr_request_url builds GitHub URL for HTTPS remotes", {
   remote_url <- "https://github.com/acme/widgets.git"
   url <- pr_request_url(
@@ -41,4 +66,47 @@ test_that("pr_request_url errors for unsupported remotes", {
     ),
     "Unsupported remote host"
   )
+})
+
+test_that("pr_init creates branch and pr_resume switches back", {
+  with_git_repo({
+    pr_init("feature/test-pr")
+    expect_equal(
+      system("git branch --show-current", intern = TRUE),
+      "feature/test-pr"
+    )
+
+    system2("git", c("checkout", "main"), stdout = TRUE, stderr = TRUE)
+    pr_resume("feature/test-pr")
+    expect_equal(
+      system("git branch --show-current", intern = TRUE),
+      "feature/test-pr"
+    )
+  })
+})
+
+test_that("pr_view(number) builds provider-specific URL", {
+  with_git_repo({
+    system2(
+      "git",
+      c("remote", "add", "origin", "https://github.com/acme/widgets.git"),
+      stdout = TRUE,
+      stderr = TRUE
+    )
+    expect_equal(
+      pr_view(number = 12, target = "primary"),
+      "https://github.com/acme/widgets/pull/12"
+    )
+
+    system2(
+      "git",
+      c("remote", "set-url", "origin", "git@gitlab.com:acme/widgets.git"),
+      stdout = TRUE,
+      stderr = TRUE
+    )
+    expect_equal(
+      pr_view(number = 34, target = "primary"),
+      "https://gitlab.com/acme/widgets/-/merge_requests/34"
+    )
+  })
 })

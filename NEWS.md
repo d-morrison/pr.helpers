@@ -1,5 +1,9 @@
 # rpt (development version)
 
+* Added `pr_init()`, `pr_resume()`, `pr_fetch()`, `pr_push()`, `pr_pull()`,
+  `pr_merge_main()`, `pr_view()`, `pr_pause()`, `pr_finish()`, and
+  `pr_forget()` helpers for pull/merge request workflows inspired by
+  `{usethis}` and extended for GitLab support.
 * Added `pr_request_url()` to generate GitHub pull request and GitLab merge request URLs from git remotes.
 * Switched from pkgdown to altdoc for documentation generation. Now using Quarto Website for documentation with native math equation support via MathJax.
 * Removed pkgdown-specific configurations and workflows.
