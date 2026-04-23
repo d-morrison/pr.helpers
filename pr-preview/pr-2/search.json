@@ -187,7 +187,7 @@
     "href": "index.html",
     "title": "{pr.helpers} (PR helpers package)",
     "section": "",
-    "text": "The goal of {pr.helpers} is to …\n\n\nYou can install the development version of {pr.helpers} from GitHub with:\n# install.packages(\"pak\")\npak::pak(\"UCD-SERG/pr.helpers\")\n\n\n\nThis is a basic example which shows you how to solve a common problem:\nlibrary(pr.helpers)\n## basic example code\n\n\n\n\n\nThis package uses altdoc with Quarto to build its documentation site. To build and preview the documentation locally:\n# Load the package\npkgload::load_all()\n\n# Render the documentation\naltdoc::render_docs()\n\n# Preview the site\naltdoc::preview_docs()\nThe documentation is automatically built and deployed to GitHub Pages via GitHub Actions when changes are pushed to the main branch.\n\n\n\n\nIf you’re looking for alternative R package templates, you may also want to consider:\n\nr.pkg.template - A comprehensive R package template from Insights Engineering\n\n\n\n\nPlease note that the {pr.helpers} project is released with a Contributor Code of Conduct. By contributing to this project, you agree to abide by its terms.",
+    "text": "The goal of {pr.helpers} is to …\n\n\nYou can install the development version of {pr.helpers} from GitHub with:\n# install.packages(\"pak\")\npak::pak(\"d-morrison/pr.helpers\")\n\n\n\nThis is a basic example which shows you how to solve a common problem:\nlibrary(pr.helpers)\n## basic example code\n\n\n\n\n\nThis package uses altdoc with Quarto to build its documentation site. To build and preview the documentation locally:\n# Load the package\npkgload::load_all()\n\n# Render the documentation\naltdoc::render_docs()\n\n# Preview the site\naltdoc::preview_docs()\nThe documentation is automatically built and deployed to GitHub Pages via GitHub Actions when changes are pushed to the main branch.\n\n\n\n\nIf you’re looking for alternative R package templates, you may also want to consider:\n\nr.pkg.template - A comprehensive R package template from Insights Engineering\n\n\n\n\nPlease note that the {pr.helpers} project is released with a Contributor Code of Conduct. By contributing to this project, you agree to abide by its terms.",
     "crumbs": [
       "Documentation",
       "Home"
@@ -198,7 +198,7 @@
     "href": "index.html#installation",
     "title": "{pr.helpers} (PR helpers package)",
     "section": "",
-    "text": "You can install the development version of {pr.helpers} from GitHub with:\n# install.packages(\"pak\")\npak::pak(\"UCD-SERG/pr.helpers\")",
+    "text": "You can install the development version of {pr.helpers} from GitHub with:\n# install.packages(\"pak\")\npak::pak(\"d-morrison/pr.helpers\")",
     "crumbs": [
       "Documentation",
       "Home"
