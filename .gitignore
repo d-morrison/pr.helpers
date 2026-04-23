@@ -9,9 +9,9 @@ inst/doc
 /doc/
 /Meta/
 docs
-rpt.Rcheck/
-rpt*.tar.gz
-rpt*.tgz
+pr.helpers.Rcheck/
+pr.helpers*.tar.gz
+pr.helpers*.tgz
 **/.quarto/
 **/*.quarto_ipynb
 vignettes/*.pdf
