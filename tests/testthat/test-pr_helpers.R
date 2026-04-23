@@ -70,13 +70,28 @@ test_that("pr_request_url supports self-hosted GitLab domains", {
     source_branch = "feature/issue-123",
     target_branch = "develop"
   )
+  expected <- paste0(
+    "https://hc2-gitlab.ucdmc.ucdavis.edu/acme/widgets/-/merge_requests/new?",
+    "merge_request%5Bsource_branch%5D=feature%2Fissue-123&",
+    "merge_request%5Btarget_branch%5D=develop"
+  )
+
+  expect_equal(url, expected)
+})
+
+test_that("pr_request_url supports gitlab subdomain hosts", {
+  url <- pr_request_url(
+    "https://gitlab.example.com/acme/widgets.git",
+    source_branch = "feature/issue-123",
+    target_branch = "main"
+  )
 
   expect_equal(
     url,
     paste0(
-      "https://hc2-gitlab.ucdmc.ucdavis.edu/acme/widgets/-/merge_requests/new?",
+      "https://gitlab.example.com/acme/widgets/-/merge_requests/new?",
       "merge_request%5Bsource_branch%5D=feature%2Fissue-123&",
-      "merge_request%5Btarget_branch%5D=develop"
+      "merge_request%5Btarget_branch%5D=main"
     )
   )
 })
@@ -105,6 +120,24 @@ test_that("pr_request_url errors for unsupported remotes", {
   expect_error(
     pr_request_url(
       "https://example.com/acme/widgets.git",
+      source_branch = "feature/issue-123",
+      target_branch = "main"
+    ),
+    "Unsupported remote host"
+  )
+
+  expect_error(
+    pr_request_url(
+      "https://mygitlabproject.com/acme/widgets.git",
+      source_branch = "feature/issue-123",
+      target_branch = "main"
+    ),
+    "Unsupported remote host"
+  )
+
+  expect_error(
+    pr_request_url(
+      "https://example-gitlab-test.com/acme/widgets.git",
       source_branch = "feature/issue-123",
       target_branch = "main"
     ),

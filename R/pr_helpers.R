@@ -331,10 +331,12 @@ parse_remote_url <- function(remote_url) {
   host <- tolower(captures[2])
   repo <- sub("\\.git$", "", captures[3])
   repo <- sub("^/+", "", repo)
+  host_label <- strsplit(host, ".", fixed = TRUE)[[1]][1]
+  gitlab_pattern <- "^(gitlab|gitlab-[a-z0-9-]+|[a-z0-9-]+-gitlab)$"
 
   provider <- if (grepl("(^|\\.)github\\.", host)) {
     "github"
-  } else if (grepl("gitlab", host, ignore.case = TRUE)) {
+  } else if (grepl(gitlab_pattern, host_label)) {
     "gitlab"
   } else {
     "unknown"
