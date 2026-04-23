@@ -42,7 +42,7 @@ You can install the development version of `{pr.helpers}` from [GitHub](https://
 
 ``` r
 # install.packages("pak")
-pak::pak("UCD-SERG/pr.helpers")
+pak::pak("d-morrison/pr.helpers")
 ```
 
 ## Example

@@ -30,7 +30,7 @@ You can install the development version of `{pr.helpers}` from
 
 ``` r
 # install.packages("pak")
-pak::pak("UCD-SERG/pr.helpers")
+pak::pak("d-morrison/pr.helpers")
 ```
 
 ## Example
