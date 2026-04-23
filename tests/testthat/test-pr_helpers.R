@@ -66,12 +66,12 @@ test_that("pr_request_url builds GitLab URL for SSH remotes", {
 
 test_that("pr_number_url builds PR-number URLs for both providers", {
   expect_equal(
-    rpt:::pr_number_url("https://github.com/acme/widgets.git", 12),
+    pr.helpers:::pr_number_url("https://github.com/acme/widgets.git", 12),
     "https://github.com/acme/widgets/pull/12"
   )
 
   expect_equal(
-    rpt:::pr_number_url("git@gitlab.com:acme/widgets.git", 34),
+    pr.helpers:::pr_number_url("git@gitlab.com:acme/widgets.git", 34),
     "https://gitlab.com/acme/widgets/-/merge_requests/34"
   )
 })
@@ -89,19 +89,19 @@ test_that("pr_request_url errors for unsupported remotes", {
 
 test_that("check_branch_name validates branch names", {
   expect_error(
-    rpt:::check_branch_name(character()),
+    pr.helpers:::check_branch_name(character()),
     "single non-empty string"
   )
   expect_error(
-    rpt:::check_branch_name(c("a", "b")),
+    pr.helpers:::check_branch_name(c("a", "b")),
     "single non-empty string"
   )
   expect_error(
-    rpt:::check_branch_name(NA_character_),
+    pr.helpers:::check_branch_name(NA_character_),
     "single non-empty string"
   )
-  expect_error(rpt:::check_branch_name(""), "single non-empty string")
-  expect_error(rpt:::check_branch_name(1), "single non-empty string")
+  expect_error(pr.helpers:::check_branch_name(""), "single non-empty string")
+  expect_error(pr.helpers:::check_branch_name(1), "single non-empty string")
 })
 
 test_that("pr_init creates branch and pr_resume switches back", {
