@@ -59,7 +59,7 @@
     "href": "CITATION.html",
     "title": "Citation",
     "section": "",
-    "text": "Citation\nTo cite package ‘rpt’ in publications use:\n\nLast F (2026). rpt: What the Package Does (One Line, Title Case). R package version 0.0.0.9011, https://github.com/UCD-SERG/rpt.",
+    "text": "Citation\nTo cite package ‘rpt’ in publications use:\n\nLast F (2026). rpt: What the Package Does (One Line, Title Case). R package version 0.0.0.9012, https://github.com/UCD-SERG/rpt.",
     "crumbs": [
       "Documentation",
       "Citation"
@@ -277,7 +277,7 @@
     "href": "vignettes/articles/quarto_article.html",
     "title": "Advanced Quarto Article",
     "section": "",
-    "text": "UC Davis Seroepidemiology Research Group (UCD-SERG)\n\n2026-04-21\nCode\nlibrary(rpt)",
+    "text": "UC Davis Seroepidemiology Research Group (UCD-SERG)\n\n2026-04-23\nCode\nlibrary(rpt)",
     "crumbs": [
       "Documentation",
       "Articles",
