@@ -1,6 +1,6 @@
 ---
 title: "Advanced Quarto Article"
-author: "UC Davis Seroepidemiology Research Group (UCD-SERG)"
+author: "pr.helpers authors"
 date: "`r Sys.Date()`"
 format:
   revealjs:
@@ -257,8 +257,8 @@ This article demonstrates the advanced capabilities of Quarto for creating rich,
 
 ## Learn More
 
-- Visit the [package website](https://ucd-serg.github.io/pr.helpers/)
-- Check out the [GitHub repository](https://github.com/UCD-SERG/pr.helpers)
+- Visit the [package website](https://d-morrison.github.io/pr.helpers/)
+- Check out the [GitHub repository](https://github.com/d-morrison/pr.helpers)
 - Read the [Quarto documentation](https://quarto.org/)
 
 ## References

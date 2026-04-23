@@ -2,9 +2,9 @@
 ^renv\.lock$
 ^.*\.Rproj$
 ^\.Rproj\.user$
-^r\.package\.template\.Rcheck$
-^r\.package\.template.*\.tar\.gz$
-^r\.package\.template.*\.tgz$
+^pr\.helpers\.Rcheck$
+^pr\.helpers.*\.tar\.gz$
+^pr\.helpers.*\.tgz$
 ^data-raw$
 ^README\.Rmd$
 ^codecov\.yml$
@@ -19,10 +19,7 @@
 ^\.quarto$
 ^vignettes/\.quarto$
 ^vignettes/.*_files$
-^CHECKLIST\.md$
 ^CODE_OF_CONDUCT\.md$
-^USAGE\.md$
-^TEMPLATE_INFO\.md$
 ^altdoc$
 ^_quarto$
 ^CONTRIBUTING\.md$

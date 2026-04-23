@@ -4,20 +4,19 @@
 \name{pr.helpers-package}
 \alias{pr.helpers}
 \alias{pr.helpers-package}
-\title{pr.helpers: What the Package Does (One Line, Title Case)}
+\title{pr.helpers: Helpers for Pull and Merge Request Git Workflows}
 \description{
-What the package does (one paragraph).
+Provides helper functions for common pull request and merge request workflows from a local Git repository. Includes utilities for creating and switching branches, fetching requests by number, generating request URLs, and syncing with the default branch across GitHub and GitLab remotes.
 }
 \seealso{
 Useful links:
 \itemize{
-  \item \url{https://github.com/UCD-SERG/pr.helpers}
-  \item \url{https://ucd-serg.github.io/pr.helpers/}
-  \item Report bugs at \url{https://github.com/UCD-SERG/pr.helpers/issues}
+  \item \url{https://github.com/d-morrison/pr.helpers}
+  \item Report bugs at \url{https://github.com/d-morrison/pr.helpers/issues}
 }
 
 }
 \author{
-\strong{Maintainer}: First Last \email{first.last@example.com}
+\strong{Maintainer}: David Morrison \email{2474437+d-morrison@users.noreply.github.com}
 
 }

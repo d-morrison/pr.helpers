@@ -1,13 +1,20 @@
 Package: pr.helpers
-Title: What the Package Does (One Line, Title Case)
+Title: Helpers for Pull and Merge Request Git Workflows
 Version: 0.0.0.9013
 Authors@R: c(
-    person("First", "Last", , "first.last@example.com", role = c("aut", "cre"))
+    person(
+      "David", "Morrison",
+      email = "2474437+d-morrison@users.noreply.github.com",
+      role = c("aut", "cre")
+    )
   )
-Description: What the package does (one paragraph).
+Description: Provides helper functions for common pull request and merge request
+    workflows from a local Git repository. Includes utilities for creating and
+    switching branches, fetching requests by number, generating request URLs, and
+    syncing with the default branch across GitHub and GitLab remotes.
 License: MIT + file LICENSE
-URL: https://github.com/UCD-SERG/pr.helpers, https://ucd-serg.github.io/pr.helpers/
-BugReports: https://github.com/UCD-SERG/pr.helpers/issues
+URL: https://github.com/d-morrison/pr.helpers
+BugReports: https://github.com/d-morrison/pr.helpers/issues
 Encoding: UTF-8
 Roxygen: list(markdown = TRUE)
 RoxygenNote: 7.3.3
