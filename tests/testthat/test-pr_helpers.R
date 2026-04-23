@@ -77,6 +77,19 @@ test_that("pr_request_url supports self-hosted GitLab domains", {
   )
 
   expect_equal(url, expected)
+
+  expect_equal(
+    pr_request_url(
+      "https://acme-gitlab.example.com/acme/widgets.git",
+      source_branch = "feature/issue-123",
+      target_branch = "main"
+    ),
+    paste0(
+      "https://acme-gitlab.example.com/acme/widgets/-/merge_requests/new?",
+      "merge_request%5Bsource_branch%5D=feature%2Fissue-123&",
+      "merge_request%5Btarget_branch%5D=main"
+    )
+  )
 })
 
 test_that("pr_request_url supports gitlab subdomain hosts", {
