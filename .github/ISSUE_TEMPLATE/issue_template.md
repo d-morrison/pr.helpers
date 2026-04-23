@@ -6,7 +6,7 @@ about: Describe a bug you've seen or make a case for a new feature
 Please briefly describe your problem and what output you expect. 
 If you have a question, please don't use this form. 
 Instead, ask on 
-<https://github.com/UCD-SERG/packagename/discussions/categories/q-a>.
+<https://github.com/d-morrison/pr.helpers/discussions/categories/q-a>.
 
 Please include a minimal reproducible example (AKA a reprex). 
 If you've never heard of a [reprex](http://reprex.tidyverse.org/) before, 

@@ -23,7 +23,7 @@ cat(
   badge_lifecycle(stage = "experimental", alt = "Lifecycle: experimental"),
   badge_github_actions(alt = "R-CMD-check", action = "R-CMD-check.yaml"),
   badge_codecov(alt = "Codecov test coverage", branch = "main"),
-  badge_codefactor(alt = "CodeFactor", ref = "ucd-serg/pr.helpers"), # case matters
+  badge_codefactor(alt = "CodeFactor", ref = "d-morrison/pr.helpers"), # case matters
   badge_cran_release(alt = "CRAN status"),
   badge_cran_download(type = "grand-total"),
   badge_cran_download(type = "last-month"),
@@ -34,7 +34,8 @@ cat(
 
 <!-- badges: end -->
 
-The goal of `{pr.helpers}` is to ...
+`{pr.helpers}` streamlines common pull request (GitHub) and merge request
+(GitLab) workflows from the command line in an R session.
 
 ## Installation
 
@@ -47,11 +48,15 @@ pak::pak("d-morrison/pr.helpers")
 
 ## Example
 
-This is a basic example which shows you how to solve a common problem:
+This example builds a pull request URL for a feature branch:
 
 ```{r example}
 library(pr.helpers)
-## basic example code
+pr_request_url(
+  "https://github.com/acme/widgets.git",
+  source_branch = "feature/new-report",
+  target_branch = "main"
+)
 ```
 
 ## Development
@@ -72,12 +77,6 @@ altdoc::preview_docs()
 ```
 
 The documentation is automatically built and deployed to GitHub Pages via GitHub Actions when changes are pushed to the main branch.
-
-## Other R Package Template Options
-
-If you're looking for alternative R package templates, you may also want to consider:
-
-- [r.pkg.template](https://github.com/insightsengineering/r.pkg.template/) - A comprehensive R package template from Insights Engineering
 
 ## Code of Conduct
 
