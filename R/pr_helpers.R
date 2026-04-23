@@ -334,7 +334,7 @@ parse_remote_url <- function(remote_url) {
 
   provider <- if (grepl("(^|\\.)github\\.", host)) {
     "github"
-  } else if (grepl("(^|\\.)gitlab\\.", host)) {
+  } else if (grepl("gitlab", host, ignore.case = TRUE)) {
     "gitlab"
   } else {
     "unknown"

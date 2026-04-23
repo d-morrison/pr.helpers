@@ -64,6 +64,23 @@ test_that("pr_request_url builds GitLab URL for SSH remotes", {
   )
 })
 
+test_that("pr_request_url supports self-hosted GitLab domains", {
+  url <- pr_request_url(
+    "git@hc2-gitlab.ucdmc.ucdavis.edu:acme/widgets.git",
+    source_branch = "feature/issue-123",
+    target_branch = "develop"
+  )
+
+  expect_equal(
+    url,
+    paste0(
+      "https://hc2-gitlab.ucdmc.ucdavis.edu/acme/widgets/-/merge_requests/new?",
+      "merge_request%5Bsource_branch%5D=feature%2Fissue-123&",
+      "merge_request%5Btarget_branch%5D=develop"
+    )
+  )
+})
+
 test_that("pr_number_url builds PR-number URLs for both providers", {
   expect_equal(
     pr.helpers:::pr_number_url("https://github.com/acme/widgets.git", 12),
@@ -73,6 +90,14 @@ test_that("pr_number_url builds PR-number URLs for both providers", {
   expect_equal(
     pr.helpers:::pr_number_url("git@gitlab.com:acme/widgets.git", 34),
     "https://gitlab.com/acme/widgets/-/merge_requests/34"
+  )
+
+  expect_equal(
+    pr.helpers:::pr_number_url(
+      "git@hc2-gitlab.ucdmc.ucdavis.edu:acme/widgets.git",
+      80
+    ),
+    "https://hc2-gitlab.ucdmc.ucdavis.edu/acme/widgets/-/merge_requests/80"
   )
 })
 
