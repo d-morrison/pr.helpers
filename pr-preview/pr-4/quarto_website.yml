@@ -14,7 +14,7 @@ project:
 bibliography: vignettes/references.bib
 website:
   title: "$ALTDOC_PACKAGE_NAME"
-  repo-url: https://github.com/UCD-SERG/pr.helpers
+  repo-url: https://github.com/d-morrison/pr.helpers
   repo-actions: [edit, source, issue]
   navbar:
     search: true
@@ -82,4 +82,3 @@ format:
 filters:
   - slidebreak
   - quarto
-
