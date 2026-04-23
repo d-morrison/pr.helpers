@@ -23,6 +23,13 @@ with_git_repo <- function(code) {
   force(code)
 }
 
+test_that("with_git_repo creates a main-branch git repository", {
+  with_git_repo({
+    expect_equal(system("git branch --show-current", intern = TRUE), "main")
+    expect_match(system("git rev-parse HEAD", intern = TRUE), "^[0-9a-f]{40}$")
+  })
+})
+
 test_that("pr_request_url builds GitHub URL for HTTPS remotes", {
   remote_url <- "https://github.com/acme/widgets.git"
   url <- pr_request_url(
@@ -57,6 +64,18 @@ test_that("pr_request_url builds GitLab URL for SSH remotes", {
   )
 })
 
+test_that("pr_number_url builds PR-number URLs for both providers", {
+  expect_equal(
+    rpt:::pr_number_url("https://github.com/acme/widgets.git", 12),
+    "https://github.com/acme/widgets/pull/12"
+  )
+
+  expect_equal(
+    rpt:::pr_number_url("git@gitlab.com:acme/widgets.git", 34),
+    "https://gitlab.com/acme/widgets/-/merge_requests/34"
+  )
+})
+
 test_that("pr_request_url errors for unsupported remotes", {
   expect_error(
     pr_request_url(
@@ -66,6 +85,23 @@ test_that("pr_request_url errors for unsupported remotes", {
     ),
     "Unsupported remote host"
   )
+})
+
+test_that("check_branch_name validates branch names", {
+  expect_error(
+    rpt:::check_branch_name(character()),
+    "single non-empty string"
+  )
+  expect_error(
+    rpt:::check_branch_name(c("a", "b")),
+    "single non-empty string"
+  )
+  expect_error(
+    rpt:::check_branch_name(NA_character_),
+    "single non-empty string"
+  )
+  expect_error(rpt:::check_branch_name(""), "single non-empty string")
+  expect_error(rpt:::check_branch_name(1), "single non-empty string")
 })
 
 test_that("pr_init creates branch and pr_resume switches back", {

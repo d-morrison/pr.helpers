@@ -449,6 +449,8 @@ git_default_branch <- function(remote = "origin") {
     return(trimws(sub(".*HEAD branch:\\s*", "", line[[1]])))
   }
 
+  # Conservative fallback when Git cannot determine remote HEAD.
+  # Repositories using a different default branch should set remote HEAD.
   "main"
 }
 
