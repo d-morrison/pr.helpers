@@ -4,7 +4,7 @@
     "href": "NEWS.html",
     "title": "rpt (development version)",
     "section": "",
-    "text": "rpt (development version)\n\nAdded pr_request_url() to generate GitHub pull request and GitLab merge request URLs from git remotes.\nSwitched from pkgdown to altdoc for documentation generation. Now using Quarto Website for documentation with native math equation support via MathJax.\nRemoved pkgdown-specific configurations and workflows.\nRetained RevealJS multi-format support for Quarto vignettes and articles.\nFixed index page rendering by switching from index.md to index.qmd to properly process Quarto include directive (#58)\nSwitched from pkgdown to altdoc (#45)\nUpdated lintr configuration to match serodynamics reference with enhanced linter rules\nPR preview comments now use recreate: true to ensure they always appear at the bottom of the PR conversation, preventing them from being hidden in collapsed sections (#31)\nAdded RevealJS presentation format for Quarto vignettes and articles in pkgdown documentation. HTML pages now display an “Other Formats” section with links to slide versions (#29)\n\n\n\nrpt 0.0.0.9000\n\nInitial development version",
+    "text": "rpt (development version)\n\nAdded pr_init(), pr_resume(), pr_fetch(), pr_push(), pr_pull(), pr_merge_main(), pr_view(), pr_pause(), pr_finish(), and pr_forget() helpers for pull/merge request workflows inspired by {usethis} and extended for GitLab support.\nAdded pr_request_url() to generate GitHub pull request and GitLab merge request URLs from git remotes.\nSwitched from pkgdown to altdoc for documentation generation. Now using Quarto Website for documentation with native math equation support via MathJax.\nRemoved pkgdown-specific configurations and workflows.\nRetained RevealJS multi-format support for Quarto vignettes and articles.\nFixed index page rendering by switching from index.md to index.qmd to properly process Quarto include directive (#58)\nSwitched from pkgdown to altdoc (#45)\nUpdated lintr configuration to match serodynamics reference with enhanced linter rules\nPR preview comments now use recreate: true to ensure they always appear at the bottom of the PR conversation, preventing them from being hidden in collapsed sections (#31)\nAdded RevealJS presentation format for Quarto vignettes and articles in pkgdown documentation. HTML pages now display an “Other Formats” section with links to slide versions (#29)\n\n\n\nrpt 0.0.0.9000\n\nInitial development version",
     "crumbs": [
       "Documentation",
       "News"
@@ -59,7 +59,7 @@
     "href": "CITATION.html",
     "title": "Citation",
     "section": "",
-    "text": "Citation\nTo cite package ‘rpt’ in publications use:\n\nLast F (2026). rpt: What the Package Does (One Line, Title Case). R package version 0.0.0.9012, https://github.com/UCD-SERG/rpt.",
+    "text": "Citation\nTo cite package ‘rpt’ in publications use:\n\nLast F (2026). rpt: What the Package Does (One Line, Title Case). R package version 0.0.0.9013, https://github.com/UCD-SERG/rpt.",
     "crumbs": [
       "Documentation",
       "Citation"
@@ -159,27 +159,27 @@
     ]
   },
   {
-    "objectID": "man/example_function.html",
-    "href": "man/example_function.html",
+    "objectID": "man/pr_request_url.html",
+    "href": "man/pr_request_url.html",
     "title": "rpt",
     "section": "",
-    "text": "This is an example function that demonstrates basic functionality.\n\nexample_function(x)\n\n\n\n\nx\n\n\nA numeric vector\n\n\nThe median of the input vector\n\n\nCodelibrary(\"rpt\")\n\nexample_function(c(1, 2, 3, 4, 5))\n\n[1] 3",
+    "text": "Build a pull/merge request URL from a git remote\n\npr_request_url(remote_url, source_branch, target_branch)\n\n\n\n\n\nremote_url\n\n\nA git remote URL.\n\n\n\n\nsource_branch\n\n\nThe source branch name.\n\n\n\n\ntarget_branch\n\n\nThe target branch name.\n\n\n\nA URL string that can be used to open a new pull request (GitHub) or merge request (GitLab).\n\n\nCodelibrary(\"rpt\")\n\npr_request_url(\n  \"https://github.com/OWNER/REPO.git\",\n  source_branch = \"feature/new-thing\",\n  target_branch = \"main\"\n)\n\n[1] \"https://github.com/OWNER/REPO/compare/main...feature%2Fnew-thing?expand=1\"",
     "crumbs": [
       "Documentation",
       "Reference",
-      "example_function"
+      "pr_request_url"
     ]
   },
   {
-    "objectID": "man/example_function.html#example-function",
-    "href": "man/example_function.html#example-function",
+    "objectID": "man/pr_request_url.html#build-a-pullmerge-request-url-from-a-git-remote",
+    "href": "man/pr_request_url.html#build-a-pullmerge-request-url-from-a-git-remote",
     "title": "rpt",
     "section": "",
-    "text": "This is an example function that demonstrates basic functionality.\n\nexample_function(x)\n\n\n\n\nx\n\n\nA numeric vector\n\n\nThe median of the input vector\n\n\nCodelibrary(\"rpt\")\n\nexample_function(c(1, 2, 3, 4, 5))\n\n[1] 3",
+    "text": "Build a pull/merge request URL from a git remote\n\npr_request_url(remote_url, source_branch, target_branch)\n\n\n\n\n\nremote_url\n\n\nA git remote URL.\n\n\n\n\nsource_branch\n\n\nThe source branch name.\n\n\n\n\ntarget_branch\n\n\nThe target branch name.\n\n\n\nA URL string that can be used to open a new pull request (GitHub) or merge request (GitLab).\n\n\nCodelibrary(\"rpt\")\n\npr_request_url(\n  \"https://github.com/OWNER/REPO.git\",\n  source_branch = \"feature/new-thing\",\n  target_branch = \"main\"\n)\n\n[1] \"https://github.com/OWNER/REPO/compare/main...feature%2Fnew-thing?expand=1\"",
     "crumbs": [
       "Documentation",
       "Reference",
-      "example_function"
+      "pr_request_url"
     ]
   },
   {
@@ -249,27 +249,51 @@
     ]
   },
   {
-    "objectID": "man/pr_request_url.html",
-    "href": "man/pr_request_url.html",
+    "objectID": "man/example_function.html",
+    "href": "man/example_function.html",
     "title": "rpt",
     "section": "",
-    "text": "Build a pull/merge request URL from a git remote\n\npr_request_url(remote_url, source_branch, target_branch)\n\n\n\n\n\nremote_url\n\n\nA git remote URL.\n\n\n\n\nsource_branch\n\n\nThe source branch name.\n\n\n\n\ntarget_branch\n\n\nThe target branch name.\n\n\n\nA URL string that can be used to open a new pull request (GitHub) or merge request (GitLab).\n\n\nCodelibrary(\"rpt\")\n\npr_request_url(\n  \"https://github.com/OWNER/REPO.git\",\n  source_branch = \"feature/new-thing\",\n  target_branch = \"main\"\n)\n\n[1] \"https://github.com/OWNER/REPO/compare/main...feature%2Fnew-thing?expand=1\"",
+    "text": "This is an example function that demonstrates basic functionality.\n\nexample_function(x)\n\n\n\n\nx\n\n\nA numeric vector\n\n\nThe median of the input vector\n\n\nCodelibrary(\"rpt\")\n\nexample_function(c(1, 2, 3, 4, 5))\n\n[1] 3",
     "crumbs": [
       "Documentation",
       "Reference",
-      "pr_request_url"
+      "example_function"
     ]
   },
   {
-    "objectID": "man/pr_request_url.html#build-a-pullmerge-request-url-from-a-git-remote",
-    "href": "man/pr_request_url.html#build-a-pullmerge-request-url-from-a-git-remote",
+    "objectID": "man/example_function.html#example-function",
+    "href": "man/example_function.html#example-function",
     "title": "rpt",
     "section": "",
-    "text": "Build a pull/merge request URL from a git remote\n\npr_request_url(remote_url, source_branch, target_branch)\n\n\n\n\n\nremote_url\n\n\nA git remote URL.\n\n\n\n\nsource_branch\n\n\nThe source branch name.\n\n\n\n\ntarget_branch\n\n\nThe target branch name.\n\n\n\nA URL string that can be used to open a new pull request (GitHub) or merge request (GitLab).\n\n\nCodelibrary(\"rpt\")\n\npr_request_url(\n  \"https://github.com/OWNER/REPO.git\",\n  source_branch = \"feature/new-thing\",\n  target_branch = \"main\"\n)\n\n[1] \"https://github.com/OWNER/REPO/compare/main...feature%2Fnew-thing?expand=1\"",
+    "text": "This is an example function that demonstrates basic functionality.\n\nexample_function(x)\n\n\n\n\nx\n\n\nA numeric vector\n\n\nThe median of the input vector\n\n\nCodelibrary(\"rpt\")\n\nexample_function(c(1, 2, 3, 4, 5))\n\n[1] 3",
     "crumbs": [
       "Documentation",
       "Reference",
-      "pr_request_url"
+      "example_function"
+    ]
+  },
+  {
+    "objectID": "man/pull-requests.html",
+    "href": "man/pull-requests.html",
+    "title": "rpt",
+    "section": "",
+    "text": "The pr_*() family helps with common pull request (GitHub) and merge request (GitLab) workflows from a local Git repository.\nThese helpers are inspired by the usethis::pr_*() family and adapted for this package’s GitHub/GitLab support.\n\n\n\npr_init(branch)\n\npr_resume(branch = NULL)\n\npr_fetch(number, target = c(\"source\", \"primary\"))\n\npr_push()\n\npr_pull()\n\npr_merge_main(target = c(\"source\", \"primary\"))\n\npr_view(number = NULL, target = c(\"source\", \"primary\"))\n\npr_pause(target = c(\"source\", \"primary\"))\n\npr_finish(number = NULL, target = c(\"source\", \"primary\"))\n\npr_forget()\n\n\n\n\n\n\n\nbranch\n\n\nName of a branch.\n\n\n\n\nnumber\n\n\nPull/merge request number.\n\n\n\n\ntarget\n\n\nWhich remote should be treated as the destination repository? Use “source” (defaults to upstream when present, otherwise origin) or “primary” (always origin).\n\n\n\n\n\n\nAdapted from pull request helper concepts in the usethis package: https://github.com/r-lib/usethis/blob/main/R/pr.R (MIT License).",
+    "crumbs": [
+      "Documentation",
+      "Reference",
+      "pull-requests"
+    ]
+  },
+  {
+    "objectID": "man/pull-requests.html#helpers-for-pullmerge-request-workflows",
+    "href": "man/pull-requests.html#helpers-for-pullmerge-request-workflows",
+    "title": "rpt",
+    "section": "",
+    "text": "The pr_*() family helps with common pull request (GitHub) and merge request (GitLab) workflows from a local Git repository.\nThese helpers are inspired by the usethis::pr_*() family and adapted for this package’s GitHub/GitLab support.\n\n\n\npr_init(branch)\n\npr_resume(branch = NULL)\n\npr_fetch(number, target = c(\"source\", \"primary\"))\n\npr_push()\n\npr_pull()\n\npr_merge_main(target = c(\"source\", \"primary\"))\n\npr_view(number = NULL, target = c(\"source\", \"primary\"))\n\npr_pause(target = c(\"source\", \"primary\"))\n\npr_finish(number = NULL, target = c(\"source\", \"primary\"))\n\npr_forget()\n\n\n\n\n\n\n\nbranch\n\n\nName of a branch.\n\n\n\n\nnumber\n\n\nPull/merge request number.\n\n\n\n\ntarget\n\n\nWhich remote should be treated as the destination repository? Use “source” (defaults to upstream when present, otherwise origin) or “primary” (always origin).\n\n\n\n\n\n\nAdapted from pull request helper concepts in the usethis package: https://github.com/r-lib/usethis/blob/main/R/pr.R (MIT License).",
+    "crumbs": [
+      "Documentation",
+      "Reference",
+      "pull-requests"
     ]
   },
   {

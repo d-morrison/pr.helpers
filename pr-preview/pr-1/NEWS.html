@@ -381,6 +381,12 @@ ul.task-list li input[type="checkbox"] {
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
+  <a href="./man/pull-requests.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">pull-requests</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
   <a href="./man/rpt-package.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">rpt-package</span></a>
   </div>
@@ -442,6 +448,7 @@ ul.task-list li input[type="checkbox"] {
 <section id="rpt-development-version" class="level1">
 <h1>rpt (development version)</h1>
 <ul>
+<li><p>Added <code>pr_init()</code>, <code>pr_resume()</code>, <code>pr_fetch()</code>, <code>pr_push()</code>, <code>pr_pull()</code>, <code>pr_merge_main()</code>, <code>pr_view()</code>, <code>pr_pause()</code>, <code>pr_finish()</code>, and <code>pr_forget()</code> helpers for pull/merge request workflows inspired by <code>{usethis}</code> and extended for GitLab support.</p></li>
 <li><p>Added <code>pr_request_url()</code> to generate GitHub pull request and GitLab merge request URLs from git remotes.</p></li>
 <li><p>Switched from pkgdown to altdoc for documentation generation. Now using Quarto Website for documentation with native math equation support via MathJax.</p></li>
 <li><p>Removed pkgdown-specific configurations and workflows.</p></li>
