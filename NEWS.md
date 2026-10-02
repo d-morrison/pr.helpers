@@ -1,5 +1,6 @@
 # pr.helpers (development version)
 
+* Added `AGENTS.md` and `.claude/settings.json` so AI coding agents load the shared lab rules from [`Morrison-Lab/ai-config`](https://github.com/Morrison-Lab/ai-config); both are excluded from the package build.
 * Added `pr_init()`, `pr_resume()`, `pr_fetch()`, `pr_push()`, `pr_pull()`,
   `pr_merge_main()`, `pr_view()`, `pr_pause()`, `pr_finish()`, and
   `pr_forget()` helpers for pull/merge request workflows inspired by
