@@ -19,4 +19,9 @@ Useful links:
 \author{
 \strong{Maintainer}: David Morrison \email{2474437+d-morrison@users.noreply.github.com}
 
+Authors:
+\itemize{
+  \item David Morrison \email{2474437+d-morrison@users.noreply.github.com}
+}
+
 }
