@@ -163,7 +163,7 @@
     "href": "man/pr.helpers-package.html",
     "title": "pr.helpers",
     "section": "",
-    "text": "Provides helper functions for common pull request and merge request workflows from a local Git repository. Includes utilities for creating and switching branches, fetching requests by number, generating request URLs, and syncing with the default branch across GitHub and GitLab remotes.\n\n\n\nMaintainer: David Morrison 2474437+d-morrison@users.noreply.github.com\n\n\n\nUseful links:\n\n\nhttps://github.com/d-morrison/pr.helpers\n\n\nReport bugs at https://github.com/d-morrison/pr.helpers/issues",
+    "text": "Provides helper functions for common pull request and merge request workflows from a local Git repository. Includes utilities for creating and switching branches, fetching requests by number, generating request URLs, and syncing with the default branch across GitHub and GitLab remotes.\n\n\n\nMaintainer: David Morrison 2474437+d-morrison@users.noreply.github.com\nAuthors:\n\n\nDavid Morrison 2474437+d-morrison@users.noreply.github.com\n\n\n\n\n\nUseful links:\n\n\nhttps://github.com/d-morrison/pr.helpers\n\n\nReport bugs at https://github.com/d-morrison/pr.helpers/issues",
     "crumbs": [
       "Documentation",
       "Reference",
@@ -175,7 +175,7 @@
     "href": "man/pr.helpers-package.html#pr.helpers-helpers-for-pull-and-merge-request-git-workflows",
     "title": "pr.helpers",
     "section": "",
-    "text": "Provides helper functions for common pull request and merge request workflows from a local Git repository. Includes utilities for creating and switching branches, fetching requests by number, generating request URLs, and syncing with the default branch across GitHub and GitLab remotes.\n\n\n\nMaintainer: David Morrison 2474437+d-morrison@users.noreply.github.com\n\n\n\nUseful links:\n\n\nhttps://github.com/d-morrison/pr.helpers\n\n\nReport bugs at https://github.com/d-morrison/pr.helpers/issues",
+    "text": "Provides helper functions for common pull request and merge request workflows from a local Git repository. Includes utilities for creating and switching branches, fetching requests by number, generating request URLs, and syncing with the default branch across GitHub and GitLab remotes.\n\n\n\nMaintainer: David Morrison 2474437+d-morrison@users.noreply.github.com\nAuthors:\n\n\nDavid Morrison 2474437+d-morrison@users.noreply.github.com\n\n\n\n\n\nUseful links:\n\n\nhttps://github.com/d-morrison/pr.helpers\n\n\nReport bugs at https://github.com/d-morrison/pr.helpers/issues",
     "crumbs": [
       "Documentation",
       "Reference",
